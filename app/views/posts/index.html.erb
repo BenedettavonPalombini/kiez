@@ -1,6 +1,7 @@
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= post.name %></li>
-    <li><%= post.content %></li>
-  <% end %>
-</ul>
+
+
+<% if params[:type_of_post]  == "building" %>
+     <% render "index_building" %>
+<% elsif params[:type_of_post] == "nieghborhood" %>
+    <% render "index_neighborhood" %>
+<% end %>
