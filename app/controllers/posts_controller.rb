@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   def index
     if params[:type_of_post]  == "building"
-      @posts = Post.all # this needs more logic later...
+      @posts = Post.where(kind: "building")
     elsif params[:type_of_post] == "neighborhood"
-      @posts = Post.where post.hidden = false && post.solved = false
+      @posts = Post.where(kind: "neighborhood")
+      # add in && post.hidden = false && post.solved = false
     end
   end
 

@@ -1,20 +1,7 @@
 
-<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://brickberlin.com/assets/imgs/common/2015/12/P1020634.JPG);">
-  <div class="container">
-     <h1><strong>Welcome to Kiez</strong></h1>
-  </div>
-</div> %>
 
-<h1 class="text-center"> Your Building </h1>
-
-<div class="container bg-card text-center mt-5">
-  <% if params[:type_of_post]  == "building" %>
+<% if params[:type_of_post]  == "building" %>
      <% render "index_building" %>
-    <h1><%= link_to post.title, post_path(post) %></h1>
-  <% elsif params[:type_of_post] == "nieghborhood" %>
+<% elsif params[:type_of_post] == "nieghborhood" %>
     <% render "index_neighborhood" %>
-  <% end %>
-      
-    <%= link_to "new post", new_post_path %>
-
-</div>
+<% end %>
