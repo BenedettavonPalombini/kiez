@@ -35,9 +35,11 @@ users.each do |new_user|
     new_post = Post.create(title: Faker::FunnyName.three_word_name,
                                       content: Faker::Quotes::Shakespeare.hamlet_quote,
                                       category: ["Advice", "Help offer", "Help search", "Giveaway"].sample,
-                                      hidden: "false",
-                                      solved: "false",
+                                      hidden: false,
+                                      solved: false,
                                       user: new_user
+                                      kind: ["building", "neighborhood"].sample
+                                    #   user: new_user
                                       )
     posts << new_post
     puts "#{new_post.id} was sucessfully created!"

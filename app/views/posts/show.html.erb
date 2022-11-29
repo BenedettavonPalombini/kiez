@@ -1,6 +1,13 @@
-<h2><%= @post.title %></h2>
-<p><%= @post.content %></p>
-<p><%= @post.category %></p>
-<p><%= @post.duration %></p>
-<p><%= @post.price %></p>
 
+
+
+<% if @post.building? %>
+    <% render "show_building" %>
+<% else %>
+    <% render "show_neighborhood" %>
+<% end %>
+
+
+
+<%# <%= this will eventually be in navbar %> %>
+<%= link_to "All Posts", posts_path %>
