@@ -8,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.integer :price
       t.boolean :hidden
       t.boolean :solved
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

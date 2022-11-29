@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  belongs_to :user
+  has_many :bookmarks
   validates :kind, inclusion: {in: ["neighborhood", "building"]}
 
   def building?
@@ -8,5 +10,4 @@ class Post < ApplicationRecord
   def neighborhood?
     kind == "neighborhood"
   end
-
 end
