@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_102031) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.boolean "verified", default: false
+    t.boolean "verified", default: true
     t.float "latitude"
     t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
