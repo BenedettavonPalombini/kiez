@@ -2,7 +2,6 @@ class PostsController < ApplicationController
 
 
   def index
-
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post]  == "building"
@@ -13,7 +12,14 @@ class PostsController < ApplicationController
       # add in && post.hidden = false && post.solved = false
     end
 
-
+    if params[:query].present?
+      sql_query = <<~SQL
+        posts.title @@ :query
+        OR posts.category @@ :query
+        OR posts.duration @@ :query
+      SQL
+      @posts = @posts.where(sql_query, query: "%#{params[:query]}%")
+    end
 
     @markers = @users.map do |user|
       {
@@ -37,7 +43,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save!
-      redirect_to posts_path(@posts)
+      redirect_to posts_path(@post.kind)
     else
       render :new, status: :unprocessable_entity
     end
