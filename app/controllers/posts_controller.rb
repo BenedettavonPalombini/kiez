@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+
   def index
 
     @users = User.geocoded
@@ -28,6 +30,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @kind = params[:kind_of_post]
   end
 
   def create
@@ -42,6 +45,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @kind = params[:kind_of_post]
   end
 
   def update
@@ -53,6 +57,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :category, :duration, :price, :hidden, :solved, :kind)
+    params.require(:post).permit(:title, :content, :category, :duration, :price, :hidden, :solved, :kind, :photo)
   end
 end
