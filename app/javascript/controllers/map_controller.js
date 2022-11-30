@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
-// Connects to data-controller="map"
+// Connects to data-controller="mapbox"
 export default class extends Controller {
   static values = {
     apiKey: String,
@@ -8,29 +9,36 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log("fererere")
+    console.log( this.apiKeyValue)
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb"
     })
-  }
-
-  connect() {
     this.#addMarkersToMap()
+    this.#fitMapToMarkers()
+    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+                                        mapboxgl: mapboxgl }))
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
-    })
-  }
+        const popup = new mapboxgl.Popup().setHTML(marker.info_window)
 
-  connect() {
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+        const customMarker = document.createElement("div")
+        // customMarker.className = "marker"
+        // customMarker.style.backgroundImage = `url('${marker.image_url}')`
+        // customMarker.style.backgroundSize = "contain"
+        // customMarker.style.width = "25px"
+        // customMarker.style.height = "25px"
+
+        new mapboxgl.Marker(customMarker)
+          .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup)
+          .addTo(this.map)
+      })
   }
 
   #fitMapToMarkers() {
