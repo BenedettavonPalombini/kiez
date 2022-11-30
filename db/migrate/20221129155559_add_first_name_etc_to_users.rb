@@ -3,6 +3,6 @@ class AddFirstNameEtcToUsers < ActiveRecord::Migration[7.0]
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     add_column :users, :address, :string
-    add_column :users, :verified, :boolean, default: true
+    add_column :users, :verified, :boolean, default: false
   end
 end
