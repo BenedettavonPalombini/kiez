@@ -1,7 +1,5 @@
-
-
 <% if params[:type_of_post]  == "building" %>
-     <% render "index_building" %>
-<% elsif params[:type_of_post] == "nieghborhood" %>
-    <% render "index_neighborhood" %>
+     <%= render "index_building" %>
+<% elsif params[:type_of_post] == "neighborhood" %>
+    <%= render "index_neighborhood" %>
 <% end %>

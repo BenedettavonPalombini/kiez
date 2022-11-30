@@ -8,6 +8,7 @@
   <%= f.input :category %>
   <%= f.input :duration %>
   <%= f.input :price %>
+  <%= f.input :kind, as: :select, collection: Post::KINDS %>
   <%= f.input :photo, as: :file %>
   </div>
 
