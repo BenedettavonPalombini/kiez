@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   def index
-
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post]  == "building"
