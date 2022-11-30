@@ -1,12 +1,12 @@
 <div class="container bg-card text-center mt-5">
   <ul>
-      <% @posts.each do |post| %>
+      <% posts.each do |post| %>
         <%# < photo > %>
         <li><%= post.title %></li>
         <li><%= post.content %></li>
         <li><%= post.category %></li>
-        <li><%= post.content %></li>
-        <li><%= post.content %></li>
+        <li><%= post %></li>
+        <li><%= post %></li>
       <% end %>
   </ul>
 </div>

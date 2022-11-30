@@ -1,16 +1,16 @@
 <div class="container bg-card text-center mt-5">
-
-  <h2><%= @post.title %></h2>
-  <p><%= @post.content %></p>
-  <p><%= @post.category %></p>
-  <p><%= @post.duration %></p>
-  <p><%= @post.price %></p>
+        <%= post %>
+  <h2><%= post.title %></h2>
+  <p><%= post.content %></p>
+  <p><%= post.category %></p>
+  <p><%= post.duration %></p>
+  <p><%= post.price %></p>
     <br>
 
   <div class="card card-body h-100">
     <%# <%= cl_image_tag @post.photo.key, class: "w-100 h-100 image-fluid", style: "object-fit: cover", crop: :fill, gravity: :face%> %>
   </div>
 
-<%= link_to "edit post", edit_post_path(@post) %>
+<%= link_to "edit post", edit_post_path(post) %>
 
 </div>
