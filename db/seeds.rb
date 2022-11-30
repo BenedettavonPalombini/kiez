@@ -37,7 +37,7 @@ users.each do |new_user|
                                       category: ["Advice", "Help offer", "Help search", "Giveaway"].sample,
                                       hidden: false,
                                       solved: false,
-                                      user: new_user
+                                      user: new_user,
                                       kind: ["building", "neighborhood"].sample
                                     #   user: new_user
                                       )
