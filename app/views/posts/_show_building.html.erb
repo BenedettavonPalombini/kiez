@@ -6,10 +6,10 @@
   <p><%= post.content %></p>
 
 
-  <div style="width: 100%; height: 600px;">
+  <div style="width: 100%; height: 600px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['pk.eyJ1IjoiZWxlc2xpZSIsImEiOiJjbGIyZWlwYTkwMmw3M3dtcHNjNnV4Z3JiIn0.MWicEhRAVggVo3Lg7XgI6w'] %>">
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
 <%= link_to "edit post", edit_post_path(post) %>
