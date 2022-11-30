@@ -3,10 +3,11 @@ class PostsController < ApplicationController
 
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
-    if params[:type_of_post]  == "building"
-      @posts = @posts.where(kind: "building")
-    elsif params[:type_of_post] == "neighborhood"
-      @posts = @posts.where(kind: "neighborhood")
+    if params[:kind_of_post]  == "building"
+      @posts = Post.where(kind: "building")
+    elsif params[:kind_of_post] == "neighborhood"
+      @posts = Post.where(kind: "neighborhood")
+
       # add in && post.hidden = false && post.solved = false
     end
 

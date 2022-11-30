@@ -1,14 +1,18 @@
+
 <h1> Your Neighborhood </h1>
+
+<h1>this is the index neighborhood</h1>
+
 
 <div class="container bg-card text-center mt-5">
   <ul>
-      <% @posts.each do |post| %>
+      <% posts.each do |post| %>
         <%# < photo > %>
         <li><%= link_to post.title, post_path(post) %></li>
         <li><%= post.content %></li>
         <li><%= post.category %></li>
-        <li><%= post.content %></li>
-        <li><%= post.content %></li>
+        <li><%= post %></li>
+        <li><%= post %></li>
       <% end %>
   </ul>
 </div>

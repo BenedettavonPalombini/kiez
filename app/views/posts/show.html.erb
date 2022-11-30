@@ -1,13 +1,12 @@
-
-
+<h1>hellloooo</h1>
 
 <% if @post.building? %>
-    <% render "show_building" %>
+    <%= render "show_building", post: @post %>
 <% else %>
-    <% render "show_neighborhood" %>
+    <%= render "show_neighborhood", post: @post %>
 <% end %>
 
 
 
 <%# <%= this will eventually be in navbar %> %>
-<%= link_to "All Posts", posts_path %>
+<%= link_to "All Posts", posts_path, kind_of_post: "neighborhood" %>

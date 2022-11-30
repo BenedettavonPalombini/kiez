@@ -1,5 +1,10 @@
-<% if params[:type_of_post]  == "building" %>
-     <%= render "index_building" %>
-<% elsif params[:type_of_post] == "neighborhood" %>
-    <%= render "index_neighborhood" %>
+
+<h1>hello</h1>
+<h4>nothing will be displayed here, you're gonna need to go to http://localhost:3000/posts?kind_of_post=neighborhood” or http://localhost:3000/posts?kind_of_post=building </h4>
+
+<% if params[:kind_of_post]  == "building" %>
+     <%= render "index_building", posts: @posts %>
+<% elsif params[:kind_of_post] == "neighborhood" %>
+    <%= render "index_neighborhood", posts: @posts %>
+
 <% end %>
