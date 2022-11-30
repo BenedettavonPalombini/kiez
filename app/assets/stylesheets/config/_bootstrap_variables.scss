@@ -22,8 +22,15 @@ $border-radius:    2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
+
 // sets all text to our darkest seaweed color instead of blacck
 $body-color: $black;
+
+$primary:    #9FCDBE;
+$success:    $light-mint;
+$info:       $light-cherry;
+$danger:     $cherry;
+$warning:    $cherry;
 
 // sets default background color to our lightest close-to-white greeen
 $body-bg: $white;
