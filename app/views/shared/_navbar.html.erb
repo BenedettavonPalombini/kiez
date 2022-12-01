@@ -8,7 +8,7 @@
         <% if user_signed_in? %>
         <div class="icon-box d-flex justify-content-center">
         <li class="icon-item active">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to "/bookmarks/new", class: "nav-link" do %>
               <i class="fa-regular fa-bookmark"></i>
             <% end %>
           </li>
@@ -27,7 +27,7 @@
               <i class="fa-regular fa-comment"></i>
             <% end %>
           </li>
-          <li class="icon-item dropdown">
+          <li class="icon-item dropup">
           <i class="fa-regular fa-user" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
