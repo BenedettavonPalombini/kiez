@@ -1,4 +1,4 @@
-<h1>this is the show building</h1>
+
 
 <div class="container bg-card text-center mt-5">
 
@@ -6,8 +6,8 @@
   <p><%= post.content %></p>
 
 
-<%= link_to "edit post", edit_post_path(post) %>
+  <div class="btn btn-success"><%= link_to "edit post", edit_post_path(post) %></div>
 
-  <%= link_to "All Posts", posts_path(kind_of_post: "building") %>
+  <div class="btn btn-success"><%= link_to "All Posts", posts_path(kind_of_post: "building") %><div>
 
 </div>
