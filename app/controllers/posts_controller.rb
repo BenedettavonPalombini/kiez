@@ -8,9 +8,9 @@ class PostsController < ApplicationController
       @posts = Post.where(kind: "building")
     elsif params[:kind_of_post] == "neighborhood"
       @posts = Post.where(kind: "neighborhood")
-
       # add in && post.hidden = false && post.solved = false
     end
+
 
     if params[:query].present?
       sql_query = <<~SQL
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
       SQL
       @posts = @posts.where(sql_query, query: "%#{params[:query]}%")
     end
+
 
     @markers = @users.map do |user|
       {
@@ -52,8 +53,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    # @post.kind = params[:kind_of_post]
     if @post.save!
-      redirect_to posts_path(@post.kind)
+      redirect_to posts_path(kind_of_post: @post.kind)
     else
       render :new, status: :unprocessable_entity
     end
@@ -61,13 +63,13 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @kind = params[:kind_of_post]
+    @kind = @post.kind
   end
 
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to posts_path(@posts)
+    redirect_to posts_path(kind_of_post: @post.kind)
   end
 
   private

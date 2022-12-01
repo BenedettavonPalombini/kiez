@@ -1,21 +1,22 @@
 <div class="row justify-content-center mt-5">
   <div class="col-lg-4">
     <div class="container bg-card mt-2 form-login">
+    <h3>New Post in Your Neighborhood</h3>
       <%= simple_form_for(@post) do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
         <div class= "form-inputs">
-        <%= f.input :title, placeholder: "I can't find my package" %>
-        <%= f.input :content, :as => :text, placeholder: "If anyone sees an Amazon package for me, please reach out. It was supposed to arrive on Tuesday..." %>
-        <%= f.input :category, placeholder: "Packages" %>
-        <%= f.input :duration, placeholder: "-" %>
-        <%= f.input :price, placeholder: "-" %>
-        <%= f.input :kind, as: :select, collection: Post::KINDS %>
+        <%= f.hidden_field :kind, value: "neighborhood" %>
+        <%= f.input :title, placeholder: "Giving Away Table" %>
+        <%= f.input :content, :as => :text, placeholder: "Moving and can't keep it, but its a nice table...." %>
+        <%= f.input :category, as: :select, collection: Post::CATEGORY %>
+        <%= f.input :duration, placeholder: "this is optional" %>
+        <%= f.input :price, placeholder: "this is optional" %>
         <%= f.input :photo, as: :file %>
         </div>
 
-        <div class="form-actions card card-body btn m-3 p-2 card btn btn-secondary">
+        <div class="form-actions m-3 p-2">
           <%= f.button :submit, class: "btn btn-primary"%>
         </div>
       <% end %>
