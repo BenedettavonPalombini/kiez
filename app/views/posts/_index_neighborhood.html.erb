@@ -1,7 +1,9 @@
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://assets.deutschlandfunk.de/FILE_2a06dd2cb506ad78ebe3d720b3d2fb89/1920x1080.jpg?t=1622298009826);">
   <div class="container">
     <h1><strong>Give a hand?</strong></h1>
     <p>Give somebody in your Kiez a hand</p>
+    <%= link_to "Make a Post", new_post_path(kind_of_post: "neighborhood") %>
       <div class="search-form-control form-group mt-10 justify-content-left" >
           <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query,

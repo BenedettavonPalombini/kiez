@@ -1,7 +1,9 @@
 
   <h1> Your Building </h1>
-
+<%= link_to "Create a new post", new_post_path(kind_of_post: "building") %>
 <h1>this is the index building</h1>
+
+
 
   <div class="container bg-card text-center mt-5">
     <ul>
@@ -9,5 +11,6 @@
         <li><%= link_to post.title, post_path(post) %></li>
         <li><%= post.content %></li>
       <% end %>
+
     </ul>
   </div>

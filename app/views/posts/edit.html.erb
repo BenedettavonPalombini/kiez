@@ -1,1 +1,7 @@
-<%= render "form" %>
+<%= "very much doubting that this will work" %>
+
+<% if  @kind == "building" %>
+     <%= render "form_building" %>
+<% elsif @kind == "neighborhood" %>
+    <%= render "form_neighborhood" %>
+<% end %>
