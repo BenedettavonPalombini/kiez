@@ -11,6 +11,17 @@ class PostsController < ApplicationController
       # add in && post.hidden = false && post.solved = false
     end
 
+
+    if params[:query].present?
+      sql_query = <<~SQL
+        posts.title @@ :query
+        OR posts.category @@ :query
+        OR posts.duration @@ :query
+      SQL
+      @posts = @posts.where(sql_query, query: "%#{params[:query]}%")
+    end
+
+
     @markers = @users.map do |user|
       {
         lat: user.latitude,
@@ -18,10 +29,20 @@ class PostsController < ApplicationController
         posts: user.posts
       }
     end
+
   end
 
   def show
     @post = Post.find(params[:id])
+
+    @markers = User.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        posts: user.posts
+      }
+    end
+
   end
 
   def new

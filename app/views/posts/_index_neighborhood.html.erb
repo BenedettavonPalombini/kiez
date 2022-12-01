@@ -1,13 +1,29 @@
 
-<h1> Your Neighborhood </h1>
+
 <%= link_to "Create a new post", new_post_path(kind_of_post: "neighborhood") %>
-<h1>this is the index neighborhood</h1>
+
 
 <div class="container bg-card text-center mt-5">
   <div style="width: 100%; height: 600px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://assets.deutschlandfunk.de/FILE_2a06dd2cb506ad78ebe3d720b3d2fb89/1920x1080.jpg?t=1622298009826);">
+  <div class="container">
+    <h1><strong>Give a hand?</strong></h1>
+    <p>Give somebody in your Kiez a hand</p>
+    <%= link_to "Make a Post", new_post_path(kind_of_post: "neighborhood") %>
+      <div class="search-form-control form-group mt-10 justify-content-left" >
+          <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a job you can help out with"
+          %>
+          <%= submit_tag "Search", class: "btn btn-secondary" %>
+          <% end %>
+      </div>
   </div>
 </div>
 
@@ -15,7 +31,7 @@
   <ul>
       <% posts.each do |post| %>
         <%# < photo > %>
-        <li><%= link_to post.title, post_path(post) %></li>
+        <li><%= link_to post.title, posts_path(kind_of_post: "neighborhood") %></li>
         <li><%= post.content %></li>
         <li><%= post.category %></li>
       <% end %>
