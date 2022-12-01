@@ -2,21 +2,23 @@
   <div class="col-lg-4">
    </h3>New Post in <%= current_user.address %></h3>
       <br>
-    <div class="container bg-card mt-2 form-login">
-      <%= simple_form_for(@post) do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="container bg-card mt-2">
+      <div class="form-login">
+        <%= simple_form_for(@post) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <div class= "form-inputs">
-        <%= f.hidden_field :kind, value: "building" %>
-        <%= f.input :title, placeholder: "I can't find my package" %>
-        <%= f.input :content,  :as => :text, placeholder: "If anyone accepted an Amazon package for me on Tuesday, please reach out... I don't know where it got delivered"%>
-        </div>
+          <div class= "form-inputs">
+          <%= f.hidden_field :kind, value: "building" %>
+          <%= f.input :title, placeholder: "I can't find my package" %>
+          <%= f.input :content,  :as => :text, placeholder: "If anyone accepted an Amazon package for me on Tuesday, please reach out... I don't know where it got delivered"%>
+          </div>
 
-        <div class="form-actions m-3 p-2">
-          <%= f.button :submit, class: "btn btn-primary"%>
-        </div>
-      <% end %>
+          <div class="form-actions m-3 p-2">
+            <%= f.button :submit, class: "btn btn-primary"%>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
