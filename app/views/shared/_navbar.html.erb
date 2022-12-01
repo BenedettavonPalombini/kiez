@@ -1,24 +1,21 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="w-100 d-flex">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
 
       <ul class="navbar-icons">
         <% if user_signed_in? %>
         <div class="icon-box d-flex justify-content-center">
         <li class="icon-item active">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to "/bookmarks/new", class: "nav-link" do %>
               <i class="fa-regular fa-bookmark"></i>
             <% end %>
           </li>
         <li class="icon-item active">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to "/posts?kind_of_post=building", class: "nav-link" do %>
               <i class="fa-solid fa-house"></i>
             <% end %>
           </li>
           <li class="icon-item active">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to "/posts?kind_of_post=neighborhood", class: "nav-link" do %>
               <i class="fa-regular fa-map"></i>
             <% end %>
           </li>
@@ -27,7 +24,7 @@
               <i class="fa-regular fa-comment"></i>
             <% end %>
           </li>
-          <li class="icon-item dropdown">
+          <li class="icon-item dropup">
           <i class="fa-regular fa-user" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
