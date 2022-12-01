@@ -8,8 +8,11 @@
   <div class="container bg-card text-center mt-5">
     <ul>
       <% posts.each do |post| %>
-        <li><%= link_to post.title, post_path(post) %></li>
-        <li><%= post.content %></li>
+        <li>
+            <%= link_to post.title, post_path(post) %>
+            <%= post.content %>
+            <%= link_to "bookmark", post_bookmarks_path(post), data: { turbo_method: :post } %>
+        </li>
       <% end %>
 
     </ul>
