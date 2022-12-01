@@ -34,18 +34,21 @@
   margin-bottom: 0;
   display: block;
   flex-grow: 1;
+  font-size: 25px;
   .icon-item {
     display: inline-block;
     padding: 10px;
-}
+  }
 }
 
 .fa-regular:hover {
   color: #ffffff !important;
+  font-size: 30px;
 }
 
 .fa-solid:hover {
   color: #ffffff !important;
+  font-size: 30px;
 }
 
 .icon-box {
