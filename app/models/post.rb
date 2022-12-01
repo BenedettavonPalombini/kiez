@@ -4,7 +4,8 @@ class Post < ApplicationRecord
   validates :kind, inclusion: {in: ["neighborhood", "building"]}
   KINDS = ["neighborhood", "building"]
   has_one_attached :photo
-
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
   def building?
     kind == "building"
   end

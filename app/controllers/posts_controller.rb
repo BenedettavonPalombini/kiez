@@ -28,10 +28,20 @@ class PostsController < ApplicationController
         posts: user.posts
       }
     end
+
   end
 
   def show
     @post = Post.find(params[:id])
+
+    @markers = User.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        posts: user.posts
+      }
+    end
+
   end
 
   def new
