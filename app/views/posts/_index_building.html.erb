@@ -1,16 +1,24 @@
-
+<div class="container bg-card text-center mt-5">
   <h1> Your Building </h1>
-<%= link_to "Create a new post", new_post_path(kind_of_post: "building") %>
-<h1>this is the index building</h1>
+  <h2> <%= current_user.address %> </h2>
+  <%= link_to "Create a new post", new_post_path(kind_of_post: "building") %>
 
-
-
-  <div class="container bg-card text-center mt-5">
-    <ul>
-      <% posts.each do |post| %>
-        <li><%= link_to post.title, post_path(post) %></li>
-        <li><%= post.content %></li>
-      <% end %>
-
-    </ul>
-  </div>
+  <% posts.each do |post| %>
+    <div class= "card">
+        <div class= "bcard card-body ">
+          <div class="row align-items-start">
+            <div class="col">
+              <%# <%= cl_image_tag @user.photo.key, class: "w-20 h-20 image-fluid img-thumbnail profileimg", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %> %>
+            </div>
+            <div class="col">
+              <%= "#{post.user.first_name} #{post.user.last_name}" %>
+            </div>
+            <div class="col">
+              <%= link_to post.title, post_path(post) %>
+            </div>
+          </div>
+          <%= post.content %>
+        </div>
+      </div>
+  <% end %>
+</div>

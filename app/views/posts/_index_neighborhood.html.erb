@@ -3,6 +3,13 @@
 <%= link_to "Create a new post", new_post_path(kind_of_post: "neighborhood") %>
 <h1>this is the index neighborhood</h1>
 
+<div class="container bg-card text-center mt-5">
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
 
 <div class="container bg-card text-center mt-5">
   <ul>
@@ -11,8 +18,6 @@
         <li><%= link_to post.title, post_path(post) %></li>
         <li><%= post.content %></li>
         <li><%= post.category %></li>
-        <li><%= post %></li>
-        <li><%= post %></li>
       <% end %>
   </ul>
 </div>
