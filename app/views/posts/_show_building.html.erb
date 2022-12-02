@@ -30,7 +30,7 @@
     </div>
       <% else %>
     <div class="col">
-      <p class="btn btn-success">Send a message to <%= "#{post.user.first_name}" %></p>
+    <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-success"  %>
     </div>
       <% end %>
   </div>
