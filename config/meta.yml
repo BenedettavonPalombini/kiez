@@ -1,0 +1,5 @@
+meta_name: "Kiez"
+meta_title: "Kiez - bringing community together through better communication"
+meta_description: "Neighboor"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@twitter"   # required for Twitter Cards
