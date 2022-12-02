@@ -11,7 +11,6 @@ class PostsController < ApplicationController
       # add in && post.hidden = false && post.solved = false
     end
 
-
     if params[:query].present?
       sql_query = <<~SQL
         posts.title @@ :query
@@ -19,6 +18,8 @@ class PostsController < ApplicationController
         OR posts.duration @@ :query
       SQL
       @posts = @posts.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @posts = Post.all
     end
 
 
