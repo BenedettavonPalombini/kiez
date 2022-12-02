@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-
-
   def index
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
@@ -21,7 +19,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-
 
     @markers = @users.map do |user|
       {
@@ -45,12 +42,20 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     @post.address = current_user.address
+    @post.solved = false
     # @post.kind = params[:kind_of_post]
     if @post.save!
       redirect_to posts_path(kind_of_post: @post.kind)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def solve
+    @post = Post.find(params[:id])
+    @post.solved = true
+    @post.save
+    redirect_to post_path(@post)
   end
 
   def edit
