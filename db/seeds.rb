@@ -42,8 +42,9 @@ posts = []
 users.each do |new_user|
 
   3.times do
-    new_post = Post.create(title: Faker::FunnyName.three_word_name,
-                                      content: Faker::Quotes::Shakespeare.hamlet_quote,
+    new_post = Post.create(title: ["help me find Snickers", "Moving Help", "getting rid of a small plant", "can I borrow a ladder?", "URGENT: need childcare 3/12", "Has anyone seen my Amazon package?",
+      "Please stop playing trumpet after 10!?", "Building Holiday Party 17/12", "giving away christmas cookies", "housesitter for Speckles next week", "Lost Fish"].sample,
+                                      content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true),
                                       hidden: false,
                                       solved: false,
                                       user: new_user,
@@ -54,11 +55,13 @@ users.each do |new_user|
   end
 
   3.times do
-    new_post = Post.new(title: Faker::FunnyName.three_word_name,
-                                    content: Faker::Quotes::Shakespeare.hamlet_quote,
+    new_post = Post.new(title: ["repair of faulty dishwasher", "Ikea Chair Assembly", "Help me put up my Christmas Tree", "Help me find Sparky", "Let's get together and make cookies!", "Couch"].sample,
+                                    content: Faker::Lorem.paragraph(sentence_count: 4, supplemental: true),
                                     category: ["Advice", "Help offer", "Help search", "Giveaway"].sample,
                                     hidden: false,
                                     solved: false,
+                                    duration: ["","", "", "", "", "10m", "30m", "1hr", "2hr", "3hr", "all day"].sample,
+                                    price: ["free", "free", "free", "free", "10", "20", "30", "40", "50"].sample,
                                     user: new_user,
                                     kind: "neighborhood",
                                     address: ["Goltzstraße 41, 13587 Berlin, Germany", "Linienstraße 49, 10119 Berlin, Germany", "Böhmische Str. 25, 12055 Berlin, Germany"].sample,
