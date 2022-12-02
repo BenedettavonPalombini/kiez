@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post]  == "building"
-      @posts = Post.where(kind: "building")
+      @posts = Post.where(kind: "building", address: current_user.address)
     elsif params[:kind_of_post] == "neighborhood"
       @posts = Post.where(kind: "neighborhood")
       # add in && post.hidden = false && post.solved = false
@@ -43,6 +43,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.address = current_user.address
     # @post.kind = params[:kind_of_post]
     if @post.save!
       redirect_to posts_path(kind_of_post: @post.kind)
