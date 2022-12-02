@@ -22,7 +22,9 @@
             <%= post.price %>
         </div>
       </div>
-      <div class="btn btn-success"><%= link_to "edit post", edit_post_path(post) %></div>
+       <% if post.user == current_user %>
+        <div class="btn btn-success"><%= link_to "edit post", edit_post_path(post) %></div>
+      <% end %>
   </div>
 </div>
 

@@ -9,7 +9,7 @@ $light-gray: #F4F4F4;
 
 // OUR COLORS:
 
-$black: #032017; //for all text - the darkest green
+$black: #032017 !default; //for all text - the darkest green
 $white: #F9FDFB; //for all backgrounds/whites, the lightest green
 // GREENS:
 $mint: #bfe9db;
@@ -17,3 +17,21 @@ $light-mint: #E1F6F4;
 // REDS:
 $cherry: #FF7A7A;
 $light-cherry: #FFCDCD;
+
+
+
+
+// $theme-colors: (
+
+
+// )
+
+// $custom-colors: (
+// "black": $black
+// "white": $white
+// "mint": $mint
+// "light-mint": $light-mint
+// "cherry": $cherry
+// "light-cherry": $light-cherry
+
+// )

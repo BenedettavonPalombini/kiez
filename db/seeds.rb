@@ -12,13 +12,13 @@ puts "destroyed posts"
 User.destroy_all
 puts "destroyed users"
 
-# User.new!(email: "test@example.com",
-#             password: "123456",
-#             first_name: "Jane",
-#             last_name: "Smith",
-#             address: "Goltzstraße 41, 13587 Berlin, Germany",
-#             verified: "true"
-#           )
+User.create!(email: "test@example.com",
+            password: "123456",
+            first_name: "Jane",
+            last_name: "Smith",
+            address: "Goltzstraße 41, 13587 Berlin, Germany",
+            verified: "true"
+          )
 #             user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
 users = []
@@ -47,7 +47,8 @@ users.each do |new_user|
                                       hidden: false,
                                       solved: false,
                                       user: new_user,
-                                      kind: "building"
+                                      kind: "building",
+                                      address: ["Goltzstraße 41, 13587 Berlin, Germany", "Linienstraße 49, 10119 Berlin, Germany", "Böhmische Str. 25, 12055 Berlin, Germany"].sample,
                                     #   user: new_user
                                       )
   end
@@ -59,7 +60,8 @@ users.each do |new_user|
                                     hidden: false,
                                     solved: false,
                                     user: new_user,
-                                    kind: "neighborhood"
+                                    kind: "neighborhood",
+                                    address: ["Goltzstraße 41, 13587 Berlin, Germany", "Linienstraße 49, 10119 Berlin, Germany", "Böhmische Str. 25, 12055 Berlin, Germany"].sample,
                                     # image: '/images/chair.jpg'
                                   )
 
