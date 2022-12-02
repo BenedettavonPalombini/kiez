@@ -6,23 +6,34 @@
 
 
   <% posts.each do |post| %>
-    <div class= "card">
+    <div class= "card no-outline">
         <div class= "bcard card-body ">
           <div class="row align-items-start">
             <div class="col">
-              <%# <%= cl_image_tag @user.photo.key, class: "w-20 h-20 image-fluid img-thumbnail profileimg", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %> %>
+            <% if post.user.photo.attached? %>
+              <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% else %>
+             <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% end %>
             </div>
             <div class="col">
               <%= "#{post.user.first_name} #{post.user.last_name}" %>
             </div>
             <div class="col">
-              <%= link_to post.title, post_path(post) %>
-            </div>
-            <div class="col">
+             <i class="bi bi-bookmark"></i>
              <%= link_to "bookmark", post_bookmarks_path(post), data: { turbo_method: :post } %>
             </div>
           </div>
-          <%= post.content %>
+          <div class="row align-items-center">
+            <div class="col mt-2">
+              <%= link_to post.title, post_path(post) %>
+            </div>
+          </div>
+           <div class="row align-items-end">
+            <div class="col">
+              <%= post.content %>
+            </div>
+          </div>
         </div>
       </div>
   <% end %>

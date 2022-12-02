@@ -1,7 +1,14 @@
-<div class="container bg-card text-center">
-  <div class="card card-body h-100">
+<div class="container mt-4 bg-card text-center">
+  <div class="card no-outline card-body h-100">
     <h2>Details for <%= post.title %></h2>
       <div class="row align-items-start">
+        <div class= "col">
+            <% if post.photo.attached? %>
+              <%= cl_image_tag post.photo.key, height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% else %>
+             <%= image_tag "chair.jpg", height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% end %>
+        </div>
         <div class= "col">
           <%= post.category %>
         </div>
@@ -27,17 +34,3 @@
       <% end %>
   </div>
 </div>
-
-  <div class="card card-body h-100">
-      <%# <%= cl_image_tag @post.photo.key, class: "w-100 h-100 image-fluid", style: "object-fit: cover", crop: :fill, gravity: :face%> %> %>
-  </div>
-
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-
-
-  <%= link_to "edit post", edit_post_path(post) %>
-  <%= link_to "All Posts", posts_path(kind_of_post: "neighborhood") %>
