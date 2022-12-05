@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   KINDS = ["neighborhood", "building"]
   CATEGORY = [
     "Lost Item", "Lost Pet", "Giveaway", "Moving", "Help Needed", "Furniture Assembly",
-    "Appliance Repair", "Childcare", "Announcement", "Translation", "Reccomendation"
+    "Appliance Repair", "Childcare", "Announcement", "Translation", "Reccomendation", "Skill Offered", "Info"
   ]
   has_one_attached :photo
   geocoded_by :address
