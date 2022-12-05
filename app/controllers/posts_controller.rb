@@ -3,9 +3,10 @@ class PostsController < ApplicationController
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post]  == "building"
-      @posts = Post.where(kind: "building", address: current_user.address)
+      @posts = Post.where(kind: "building").where(address: current_user.address)
     elsif params[:kind_of_post] == "neighborhood"
-      @posts = Post.where(kind: "neighborhood")
+      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
     end
 
@@ -16,9 +17,9 @@ class PostsController < ApplicationController
         OR posts.duration @@ :query
       SQL
       @posts = @posts.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @posts = Post.all
     end
+
+    @user_location = [current_user.longitude, current_user.latitude]
 
     @markers = @users.map do |user|
       {
@@ -68,6 +69,7 @@ class PostsController < ApplicationController
     @post.update(post_params)
     redirect_to posts_path(kind_of_post: @post.kind)
   end
+
 
   private
 

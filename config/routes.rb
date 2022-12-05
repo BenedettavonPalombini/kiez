@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'bookmarks/new'
   devise_for :users
-  root to: "posts#index"
+  root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :conversations, only: [:create, :show, :index] do
     resources :messages, only: :create

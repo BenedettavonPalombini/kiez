@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
-
+#binding pry
+gem 'pry', '~> 0.13.1'
 
 #cloudinary
 gem "cloudinary"
