@@ -6,5 +6,4 @@ class Conversation < ApplicationRecord
   def other_users(current_user)
     users.where.not(id: current_user.id)
   end
-
 end
