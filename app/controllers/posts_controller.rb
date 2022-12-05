@@ -3,9 +3,11 @@ class PostsController < ApplicationController
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post]  == "building"
-      @posts = Post.where(kind: "building").where(address: current_user.address)
+      @posts = Post.where(kind: "building", address: current_user.address).where("created_at => ?", 7.days.ago)
     elsif params[:kind_of_post] == "neighborhood"
-      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      @posts = Post.where(kind: "neighborhood").where("created_at => ?", 14.days.ago).near([current_user.latitude, current_user.longitude], 5)
+    # elsif params[:kind_of_post] == "neighborhood"
+     # @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
       # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
     end
