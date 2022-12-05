@@ -2,12 +2,9 @@
 
 <% conversations = Conversation.all %>
 <% conversations.each do |conversation| %>
-<div class= "card">
-        <div class= "bcard card-body ">
-          <div class="row align-items-start">
-            <div class="col">
-            </div>
-            <div class="col">
-              <h2> <%= link_to conversation.other_users(current_user).first.first_name, conversation_path(conversation) %> </h2>
-            </div>
+    <% if conversation.other_users(current_user).empty? %>
+      <%= nil %>
+    <% else %>
+      <h2> <%= link_to conversation.other_users(current_user)[0].first_name, conversation_path(conversation) %> </h2>
+    <% end  %>
 <% end %>
