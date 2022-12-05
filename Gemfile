@@ -90,3 +90,4 @@ group :test do
 end
 
 gem "faker"
+gem 'pry', '~> 0.13.1'

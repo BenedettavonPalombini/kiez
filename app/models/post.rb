@@ -1,6 +1,13 @@
 class Post < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
+  # Create logic that if 'created_at' is > 1 week for kind==building, then hide
+  # scope :building, -> { where(kind==building) }
+  # scope :valid_building, -> { building.where('created_at > ?', 7.days.ago )}
+  # scope :valid_two, -> { where('created_at > ?', 2.days.ago )}
+  # Create logic that if 'created_at' is > 2 week ago for kind==hood, then hide
+  # scope :hood, -> { where(kind==neighborhood) }
+  # scope :valid_hood, -> { where('created_at > ?', 7.days.ago )}
 
   has_many :bookmarks, dependent: :destroy
   validates :kind, inclusion: { in: ["neighborhood", "building"] }
@@ -20,4 +27,5 @@ class Post < ApplicationRecord
   def neighborhood?
     kind == "neighborhood"
   end
+  
 end
