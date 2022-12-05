@@ -16,7 +16,7 @@ class PostsController < ApplicationController
         OR posts.category @@ :query
         OR posts.duration @@ :query
       SQL
-      @posts = @posts.where(sql_query, query: "%#{params[:query]}%")
+      @posts = @posts.near([current_user.latitude, current_user.longitude], 5).where(sql_query, query: "%#{params[:query]}%")
     end
 
     @user_location = [current_user.longitude, current_user.latitude]
