@@ -10,7 +10,12 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
     if @message.save
-      redirect_to conversation_path(@conversation)
+      ConversationChannel.broadcast_to(
+        @conversation,
+        message: render_to_string(partial: "message", locals: { message: @message }),
+        sender_id: @message.user.id
+      )
+      head :ok
     else
       render "conversations/show", status: :unprocessable_entity
     end
