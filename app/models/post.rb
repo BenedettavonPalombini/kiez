@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :category, presence: true
 
   has_many :bookmarks, dependent: :destroy
   validates :kind, inclusion: { in: ["neighborhood", "building"] }
