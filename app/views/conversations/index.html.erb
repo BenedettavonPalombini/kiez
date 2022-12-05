@@ -1,7 +1,7 @@
 <h1 class="d-flex justify-content-center"> Inbox </h1>
 
-<% conversations = Conversation.all %>
-<% conversations.each do |conversation| %>
+
+<% @conversations.each do |conversation| %>
     <% if conversation.other_users(current_user).empty? %>
       <%= nil %>
     <% else %>
