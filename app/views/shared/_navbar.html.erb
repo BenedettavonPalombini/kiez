@@ -5,20 +5,20 @@
         <% if user_signed_in? %>
         <div class="icon-box d-flex justify-content-center">
         <li class="icon-item active">
-            <%= link_to "/bookmarks/new", class: "nav-link" do %>
-              <% if params[:controller] == "bookmarks" && params[:action] == "index" %>
-                <i class="fa-regular fa-bookmark" style="color:#FFFFFF; font-size:35px"></i>
+            <%= link_to root_path, class: "nav-link" do %>
+              <% if params[:controller] == "pages" && params[:action] == "home" %>
+                <i class="fa-regular fa-circle" style="color:#FFFFFF; font-size:35px"></i>
               <% else %>
-                <i class="fa-regular fa-bookmark"></i>
+                <i class="fa-regular fa-circle"></i>
               <% end %>
             <% end %>
           </li>
         <li class="icon-item active">
             <%= link_to "/posts?kind_of_post=building", class: "nav-link" do %>
               <% if params[:controller] == "posts" && params[:action] == "index" && params[:kind_of_post] == "building" %>
-                <i class="fa-solid fa-house" style="color:#FFFFFF; font-size:35px"></i>
+                <i class="fa-regular fa-building" style="color:#FFFFFF; font-size:35px"></i>
               <% else %>
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-regular fa-building"></i>
               <% end %>
             <% end %>
           </li>
