@@ -5,7 +5,8 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    userLocation: Array
   }
 
   connect() {
@@ -13,12 +14,13 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb"
+      style: "mapbox://styles/madeleinemcd/clbawm9id000114lm8njvr8j8",
+      center: [ this.userLocationValue[0], this.userLocationValue[1] ], // Starting position [lng, lat]
+      zoom: 15,
+
     })
     this.#addMarkersToMap()
-    this.#fitMapToMarkers()
-    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                        mapboxgl: mapboxgl }))
+    // this.#fitMapToMarkers()
   }
 
   #addMarkersToMap() {
@@ -51,7 +53,7 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    // this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.map.fitBounds(bounds, { padding: 70, duration: 0 })
   }
 }

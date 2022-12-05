@@ -5,7 +5,10 @@ class PostsController < ApplicationController
     if params[:kind_of_post]  == "building"
       @posts = Post.where(kind: "building", address: current_user.address).where("created_at => ?", 7.days.ago)
     elsif params[:kind_of_post] == "neighborhood"
-      @posts = Post.where(kind: "neighborhood").where("created_at => ?", 14.days.ago)
+      @posts = Post.where(kind: "neighborhood").where("created_at => ?", 14.days.ago).near([current_user.latitude, current_user.longitude], 5)
+    # elsif params[:kind_of_post] == "neighborhood"
+     # @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
     end
 
@@ -15,10 +18,10 @@ class PostsController < ApplicationController
         OR posts.category @@ :query
         OR posts.duration @@ :query
       SQL
-      @posts = @posts.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @posts = Post.all
+      @posts = @posts.near([current_user.latitude, current_user.longitude], 5).where(sql_query, query: "%#{params[:query]}%")
     end
+
+    @user_location = [current_user.longitude, current_user.latitude]
 
     @markers = @users.map do |user|
       {
@@ -68,6 +71,7 @@ class PostsController < ApplicationController
     @post.update(post_params)
     redirect_to posts_path(kind_of_post: @post.kind)
   end
+
 
   private
 

@@ -8,6 +8,9 @@ class Post < ApplicationRecord
   # Create logic that if 'created_at' is > 2 week ago for kind==hood, then hide
   # scope :hood, -> { where(kind==neighborhood) }
   # scope :valid_hood, -> { where('created_at > ?', 7.days.ago )}
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :category, presence: true
 
   has_many :bookmarks, dependent: :destroy
   validates :kind, inclusion: { in: ["neighborhood", "building"] }
