@@ -8,5 +8,7 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   has_many :bookmarks
   has_many :posts
+  has_many :user_conversations
+  has_many :conversations, through: :user_conversations
   has_one_attached :photo
 end
