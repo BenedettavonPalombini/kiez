@@ -2,11 +2,11 @@
   <div class="card card body no-outline"></div>
     <div class="row align-items-start">
       <div class="col">
-      <% if post.user.photo.attached? %>
-        <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-      <% else %>
-        <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-      <% end %>
+        <% if post.user.photo.attached? %>
+          <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+        <% else %>
+          <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+        <% end %>
       </div>
       <div class="col">
         <%= "#{post.user.first_name} #{post.user.last_name}" %>
