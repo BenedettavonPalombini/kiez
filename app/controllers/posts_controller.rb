@@ -6,7 +6,7 @@ class PostsController < ApplicationController
       @posts = Post.where(kind: "building").where(address: current_user.address)
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 7.days.ago)
-    elsif params[:kind_of_post] == "neighborhood"
+    elsif params[:kind_of_post] == "neighborhood" && params.has_key?("category")
       # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
       @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
@@ -14,6 +14,9 @@ class PostsController < ApplicationController
         post.category == params[:category]
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 14.days.ago)
+      end
+    elsif params[:kind_of_post] == "neighborhood"
+      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
     end
 
     if params[:query].present?
