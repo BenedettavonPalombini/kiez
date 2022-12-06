@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
   validates :category, presence: true
-
   has_many :bookmarks, dependent: :destroy
   validates :kind, inclusion: { in: ["neighborhood", "building"] }
   KINDS = ["neighborhood", "building"]
