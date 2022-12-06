@@ -4,13 +4,16 @@ class PostsController < ApplicationController
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post]  == "building"
       @posts = Post.where(kind: "building").where(address: current_user.address)
-    elsif params[:kind_of_post] == "neighborhood" && params.has_key?("category")
+      # logic to hide posts after x amount of days
+      # .where("created_at => ?", 7.days.ago)
+    elsif params[:kind_of_post] == "neighborhood"
+      # add in nearby radius for kiez
+      # add in && post.hidden = false && post.solved = false
       @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
       @posts = @posts.select do |post|
         post.category == params[:category]
-      end
-    elsif params[:kind_of_post] == "neighborhood"
-      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      # logic to hide posts after x amount of days
+      # .where("created_at => ?", 14.days.ago)
     end
 
     if params[:query].present?
@@ -48,10 +51,10 @@ class PostsController < ApplicationController
     @post.address = current_user.address
     @post.solved = false
     # @post.kind = params[:kind_of_post]
-    if @post.save!
+    if @post.save
       redirect_to posts_path(kind_of_post: @post.kind)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to posts_path(kind_of_post: @post.kind), notice: "Post Not Created, please fill out all fields"
     end
   end
 
