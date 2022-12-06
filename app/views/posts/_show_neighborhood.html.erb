@@ -1,43 +1,47 @@
 <div class="container mt-4 bg-card text-center">
-  <div class="card no-outline card-body h-100">
-    <h2>Details for <%= post.title %></h2>
-      <div class="row align-items-start">
-        <div class= "col">
-            <% if post.photo.attached? %>
-              <%= cl_image_tag post.photo.key, height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-            <% else %>
-             <%= image_tag "chair.jpg", height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-            <% end %>
-        </div>
-        <div class= "col">
-          <%= post.category %>
-        </div>
-      </div>
-        <div class="row align-items-center">
-          <div class= "col">
-            <%= post.created_at.strftime("%m/%d/%Y") %>
+  <div class="row">
+    <div class="col-sm-3">col-sm-8</div>
+      <div class="card no-outline card-body h-100">
+        <h2>Details for <%= post.title %></h2>
+          <div class="row align-items-start">
+            <div class= "col">
+                <% if post.photo.attached? %>
+                  <%= cl_image_tag post.photo.key, height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                <% else %>
+                <%= image_tag "chair.jpg", height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                <% end %>
+            </div>
+            <div class= "col">
+              <%= post.category %>
+            </div>
           </div>
-        </div>
-      <div class="row">
-        <div class="col align-self-center">
-            <%= post.content  %>
-        </div>
+            <div class="row align-items-center">
+              <div class= "col">
+                <%= post.created_at.strftime("%m/%d/%Y") %>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col align-self-center">
+                <%= post.content  %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col align-self-end">
+                <%= post.duration %>
+                <%= post.price %>
+            </div>
+          </div>
+          </div>
+          <% if post.user == current_user %>
+            <div class="col">
+          <div class="btn btn-success"><%= link_to "edit post", edit_post_path(post) %></div>
+          </div>
+            <% else %>
+          <div class="col">
+            <p class="btn btn-success">Send a message to <%= "#{post.user.first_name}" %></p>
+          </div>
+            <% end %>
       </div>
-      <div class="row">
-        <div class="col align-self-end">
-            <%= post.duration %>
-            <%= post.price %>
-        </div>
-      </div>
-       </div>
-      <% if post.user == current_user %>
-        <div class="col">
-      <div class="btn btn-success"><%= link_to "edit post", edit_post_path(post) %></div>
-      </div>
-        <% else %>
-      <div class="col">
-        <p class="btn btn-success">Send a message to <%= "#{post.user.first_name}" %></p>
-      </div>
-        <% end %>
+    </div>
   </div>
 </div>
