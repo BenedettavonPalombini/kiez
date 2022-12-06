@@ -8,8 +8,9 @@ class Post < ApplicationRecord
   validates :kind, inclusion: { in: ["neighborhood", "building"] }
   KINDS = ["neighborhood", "building"]
   CATEGORY = [
-    "Lost Item", "Lost Pet", "Giveaway", "Moving", "Help Needed", "Furniture Assembly",
-    "Appliance Repair", "Childcare", "Announcement", "Translation", "Reccomendation", "Skill Offered", "Info"
+    "Lost Item", "Lost Pet", "Giveaway", "Moving", "Announcement", "Furniture Assembly",
+    "Appliance Repair", "Housesitting",
+    "Language Exchange", "Reccomendation", "Workshop"
   ]
   has_one_attached :photo
   geocoded_by :address
