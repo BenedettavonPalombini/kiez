@@ -41,18 +41,18 @@ puts "end of user creation"
 posts = []
 users.each do |new_user|
 
-  3.times do
-    new_post = Post.create(title: ["help me find Snickers", "Moving Help", "getting rid of a small plant", "can I borrow a ladder?", "URGENT: need childcare 3/12", "Has anyone seen my Amazon package?",
-      "Please stop playing trumpet after 10!?", "Building Holiday Party 17/12", "giving away christmas cookies", "housesitter for Speckles next week", "Lost Fish"].sample,
-                                      content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true),
-                                      hidden: false,
-                                      solved: false,
-                                      user: new_user,
-                                      kind: "building",
-                                      address: ["Goltzstraße 41, 13587 Berlin, Germany", "Linienstraße 49, 10119 Berlin, Germany", "Böhmische Str. 25, 12055 Berlin, Germany"].sample,
-                                    #   user: new_user
-                                      )
-  end
+  # # 3.times do
+  #   louise_new_post = Post.create(title: ["help me find Snickers", "Moving Help", "getting rid of a small plant", "can I borrow a ladder?", "URGENT: need childcare 3/12", "Has anyone seen my Amazon package?",
+  #     "Please stop playing trumpet after 10!?", "Building Holiday Party 17/12", "giving away christmas cookies", "housesitter for Speckles next week", "Lost Fish"].sample,
+  #                                     content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true),
+  #                                     hidden: false,
+  #                                     solved: false,
+  #                                     user: john,
+  #                                     kind: "building"
+  #                                     address: john.address
+  #                                   #   user: new_user
+  #                                     )
+  # end
 
   3.times do
     new_post = Post.new(title: ["repair of faulty dishwasher", "Ikea Chair Assembly", "Help me put up my Christmas Tree", "Help me find Sparky", "Let's get together and make cookies!", "Couch"].sample,
