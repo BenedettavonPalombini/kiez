@@ -51,10 +51,10 @@ class PostsController < ApplicationController
     @post.address = current_user.address
     @post.solved = false
     # @post.kind = params[:kind_of_post]
-    if @post.save!
+    if @post.save
       redirect_to posts_path(kind_of_post: @post.kind)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to posts_path(kind_of_post: @post.kind), notice: "Post Not Created, please fill out all fields"
     end
   end
 
