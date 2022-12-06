@@ -63,6 +63,7 @@ tom = User.create!(email: "test26@example.com",
 tom.save
 #             user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
+
 emma = User.create!(email: "test27@test.com",
             password: "123456",
             first_name: "Emma",
@@ -253,6 +254,7 @@ new_post = Post.create!(title: "Notice High Rent",
                         kind: "building",
                         address: "Heilbronner Str. 23, 10779 Berlin"
 )
+
 
 new_post.save
 

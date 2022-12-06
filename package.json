@@ -2,13 +2,15 @@
   "name": "app",
   "private": "true",
   "dependencies": {
-    "@hotwired/stimulus": "^3.2.0",
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@hotwired/turbo-rails": "^7.2.4",
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@popperjs/core": "^2.11.6",
     "@rails/actioncable": "^7.0.4",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
+    "sortablejs": "^1.15.0",
     "stimulus-places-autocomplete": "^0.5.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0"
