@@ -6,7 +6,7 @@
     <i class="fa-solid fa-plus"></i>
     <% end %>
   </div>
-  <div class= "m-3 btn btn-success"><%=link_to "All Projects Near Me", posts_path( :kind_of_post => "neighborhood")%></div>
+
   <div class="mb-3 search-form-control form-group mt-10 justify-content-left" >
     <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
       <%= hidden_field_tag :kind_of_post, "neighborhood" %>
@@ -32,14 +32,15 @@
   <div class= "btn btn-success"><%=link_to "Recommendation", posts_path(:category => "Recommendation", :kind_of_post => "neighborhood")%></div>
   <div class= "btn btn-success"><%=link_to "Workshop", posts_path(:category => "Workshop", :kind_of_post => "neighborhood")%></div>
 </div>
-<div class="container text-center mt-5">
-  <div class="">
-    <div style="width: 100%; height: 300px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-user-location-value="<%= @user_location %>"
-      data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"]%>">
-    </div>
+<div class="container text-center">
+  <div class= "m-3 btn btn-success"><%=link_to "All Projects Near Me", posts_path( :kind_of_post => "neighborhood")%></div>
+</div>
+<div class="container text-center">
+  <div style="width: 100%; height: 300px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-user-location-value="<%= @user_location %>"
+    data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"]%>">
   </div>
 </div>
 <div class="container">
@@ -47,7 +48,7 @@
     <% posts.each do |post| %>
       <div class="col-lg-2 col-md-4 col-sm-12 bg-card bcard card card-body card-trip no-outline">
         <div class="d-flex align-items-start">
-          <div class="d-flex">
+          <div class="d-flex img">
             <% if post.photo.attached? %>
               <%= cl_image_tag post.photo.key, height: 100, class: "image-fluid", style: "object-fit: cover", alt: "post-picture", crop: :fill, gravity: :face %>
             <% else %>
