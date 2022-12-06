@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   CATEGORY = [
     "Lost Item", "Lost Pet", "Giveaway", "Moving", "Announcement", "Furniture Assembly",
     "Appliance Repair", "Housesitting",
-    "Language Exchange", "Reccomendation", "Workshop"
+    "Language Exchange", "Recommendation", "Workshop"
   ]
   has_one_attached :photo
   geocoded_by :address
