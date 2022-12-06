@@ -10,6 +10,8 @@ class PostsController < ApplicationController
       # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
       @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      @posts = @posts.select do |post|
+        post.category == params[:category]
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 14.days.ago)
     end
