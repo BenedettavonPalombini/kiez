@@ -2,21 +2,21 @@ class PostsController < ApplicationController
   def index
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
-    if params[:kind_of_post]  == "building"
-      @posts = Post.where(kind: "building").where(address: current_user.address)
+    if params[:kind_of_post] == "building"
+      @posts = Post.where(kind: "building").where(address: current_user.address).where(solved: false)
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 7.days.ago)
     elsif params[:kind_of_post] == "neighborhood" && params.has_key?("category")
       # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
-      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
       @posts = @posts.select do |post|
         post.category == params[:category]
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 14.days.ago)
       end
     elsif params[:kind_of_post] == "neighborhood"
-      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
     end
 
     if params[:query].present?
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
         OR posts.category @@ :query
         OR posts.duration @@ :query
       SQL
-      @posts = @posts.near([current_user.latitude, current_user.longitude], 5).where(sql_query, query: "%#{params[:query]}%")
+      @posts = @posts.near([current_user.latitude, current_user.longitude], 5).where(sql_query, query: "%#{params[:query]}%").where(solved: false)
     end
 
     @user_location = [current_user.longitude, current_user.latitude]
@@ -79,11 +79,9 @@ class PostsController < ApplicationController
     redirect_to posts_path(kind_of_post: @post.kind)
   end
 
-
   private
 
   def post_params
     params.require(:post).permit(:title, :content, :category, :duration, :price, :hidden, :solved, :kind, :photo)
-  end
   end
 end
