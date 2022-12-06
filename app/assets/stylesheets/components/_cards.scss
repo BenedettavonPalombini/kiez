@@ -90,9 +90,23 @@ border-radius: 15px;
 .cards {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
   padding: 16px;
+}
+
+.col .fa-bookmark {
+  font-size:20px;
+  float: right;
+  color:#9FCDBE;
+  border:none;
+}
+
+.col .fa-solid {
+  font-size:20px;
+  float: right;
+  color:#FF7A7A;
+  border:none;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
