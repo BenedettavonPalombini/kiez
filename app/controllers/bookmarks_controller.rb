@@ -1,13 +1,5 @@
 class BookmarksController < ApplicationController
 
-  def index
-    # [...]
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: "movies/list", locals: { bookmarks: @bookmarks }, formats: [:html] }
-    end
-  end
-
   def new
     @bookmark = Bookmark.new
   end
