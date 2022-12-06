@@ -4,10 +4,13 @@ class PostsController < ApplicationController
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post]  == "building"
       @posts = Post.where(kind: "building").where(address: current_user.address)
+    elsif params[:kind_of_post] == "neighborhood" && params.has_key?("category")
+      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
+      @posts = @posts.select do |post|
+        post.category == params[:category]
+      end
     elsif params[:kind_of_post] == "neighborhood"
       @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5)
-      # add in nearby radius for kiez
-      # add in && post.hidden = false && post.solved = false
     end
 
     if params[:query].present?
