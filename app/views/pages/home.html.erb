@@ -2,14 +2,13 @@
 <div class="hbanner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80);">
   <div class="container">
    <div class="d-flex justify-content-left"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 95 %></div>
-    <h1><h2>Welcome to <%= current_user.address.split(",")[0]%></h2></h1>
-    <a class="btn btn-default" >
+    <h2>Welcome to <%= current_user.address.split(",")[0]%></h2>
   </div>
 </div>
 
 <% @building_user.each do |user| %>
   <div class= "card no-outline">
-    <div class= "bcard">
+    <div class= "inbox-card m-1">
       <div class="row align-items-start">
         <div class="col">
           <% if user.photo.attached? %>
@@ -27,4 +26,4 @@
       </div>
     </div>
   <% end %>
- </div> 
+ </div>
