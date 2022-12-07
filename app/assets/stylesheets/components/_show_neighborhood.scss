@@ -1,0 +1,45 @@
+.wrapper-show{
+  display: grid;
+}
+
+.firstone {
+  width:100%;
+  text-align:center;
+  justify-content: center;
+}
+
+.firstone .category {
+  float: right;
+  width: 100px;
+}
+
+.firstone .show-neighborhood-title {
+  float: left;
+  width:100px;
+}
+
+.secondone {
+  display:flex;
+}
+
+.secondone .show-neighborhood-picture {
+  margin-right: 13px;
+}
+
+.thirdone {
+  display: inline-block
+}
+
+.neighborhood-profilepic {
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 5px;
+}
+
+.avatar-line {
+  float: left;
+}
+
+.show-neighborhood-edit {
+  float: right;
+}
