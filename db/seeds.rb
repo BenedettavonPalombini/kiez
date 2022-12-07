@@ -409,7 +409,7 @@ new_post.save!
 new_post = Post.new(title: "Restaurant Recommendation",
                     content: "I just moved into the neighborhood. Does anyone have
                     a list of restaurants they can recommend to me?",
-                    category: "Info",
+                    category: "Recommendation",
                     hidden: false,
                     solved: false,
                     user: christa,
@@ -455,7 +455,7 @@ new_post.save!
 new_post = Post.new(title: "My Fridge is Broken",
                     content: "My fridge is broken, and I can't wait too long for a handyman.
                     Is anyone experienced in this kind of thing? I'm willing to pay.",
-                    category: "",
+                    category: "Appliance Repair",
                     hidden: false,
                     solved: false,
                     duration: "1 hour",

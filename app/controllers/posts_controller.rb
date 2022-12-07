@@ -38,6 +38,8 @@ class PostsController < ApplicationController
         image_url: helpers.asset_url("kiez-logo.png")
       }
     end
+
+    @posts = @posts.order(created_at: :desc)
   end
 
   def show

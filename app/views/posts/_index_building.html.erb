@@ -1,5 +1,10 @@
-<div class="container bg-card text-center mt-5">
-  <h1> Bulletin Board </h1>
+
+<div class="container bg-card text-center">
+  <%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 150 %>
+<div class="container bg-card text-left">
+  <div class="justify-content-left">
+  <%= image_tag "kiez-logo.svg", alt: "KIEZ logo", width: 35 %>
+  </div>
   <h2> <%= current_user.address.split(",")[0] %> </h2>
     <div>
       <%= link_to new_post_path(kind_of_post: "building"), class: "btn" do %>
@@ -7,40 +12,48 @@
       <% end %>
     </div>
       <% posts.each do |post| %>
-        <div class= "card no-outline">
-            <div class= "bcard card-body cards">
-              <div class="row align-items-start">
-                <div class="col">
+        <div class="container bg-card text-center mt-5">
+          <div class="col-lg-2 col-md-4 col-sm-12 bg-card bcard card card-body card-trip no-outline">
+            <div class="row avatar-line">
+              <div class="col avatar">
                 <% if post.user.photo.attached? %>
-                  <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                  <%= cl_image_tag post.user.photo.key, class: "image-fluid show-image", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
                 <% else %>
-                <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                  <%= image_tag "user.jpg", class: "image-fluid show-image", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
                 <% end %>
-                </div>
-                <div class="col">
-                  <%= "#{post.user.first_name} #{post.user.last_name}" %>
-                </div>
-                <div class="col">
-                  <% bookmark = Bookmark.find_by(user: current_user, post: post) %>
-                  <i class="fa-<%= bookmark.present? ? "solid" : "regular" %> fa-bookmark"
-                    data-controller="bookmark"
-                    data-action="click->bookmark#change"
-                    data-bookmark-id="<%= bookmark&.id  %>"
-                    data-post-id="<%= post.id %>"
-                    data-scrf-token="<%= form_authenticity_token %>"
-                  ></i>
-                </div>
-              <div class="row align-items-center">
-                <div class="col mt-2">
-                  <%= link_to post.title, post_path(post) %>
-                </div>
               </div>
-              <div class="row align-items-end">
-                <div class="col">
-                  <%= post.content %>
-                </div>
+              <div class="name col">
+                <%= "#{post.user.first_name} #{post.user.last_name}" %>
+              </div>
+                <% bookmark = Bookmark.find_by(user: current_user, post: post) %>
+                <i class="fa-<%= bookmark.present? ? "solid" : "regular" %> fa-bookmark"
+                data-controller="bookmark"
+                data-action="click->bookmark#change"
+                data-bookmark-id="<%= bookmark&.id  %>"
+                data-post-id="<%= post.id %>"
+                data-scrf-token="<%= form_authenticity_token %>"
+                ></i>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-2">
+                <h2 class="show-header"><%= post.title %></h2>
               </div>
             </div>
+            <div class="row align-items-end">
+              <div class="col">
+                <p class="show-p"><%= post.content %></p>
+              </div>
+            </div>
+            <% if post.user == current_user %>
+              <div class="col show-button">
+                <div class="btn btn-default"><%= link_to "Edit Post", edit_post_path(post) %></div>
+              </div>
+            <% else %>
+              <div class="col show-button">
+                <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-default"  %>
+              </div>
+            <% end %>
           </div>
+        </div>
       <% end %>
-    </div>
+</div>

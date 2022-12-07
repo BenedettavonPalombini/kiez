@@ -1,7 +1,8 @@
+
 <div class="hbanner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80);">
   <div class="container">
+   <div class="d-flex justify-content-left"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 95 %></div>
     <h1><h2>Welcome to <%= current_user.address.split(",")[0]%></h2></h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
     <a class="btn btn-default" >
   </div>
 </div>
@@ -21,9 +22,9 @@
           <%= "#{user.first_name} #{user.last_name}" %>
         </div>
         <div class="col">
-          <%= link_to "Message", conversations_path(user: user), data: { turbo_method: :post}, class: "btn btn-success"  %>
+          <%= link_to "Message", conversations_path(user: user), data: { turbo_method: :post}, class: "btn btn-messaging"%>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+ </div> 
