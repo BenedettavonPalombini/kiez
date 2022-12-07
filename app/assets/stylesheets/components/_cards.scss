@@ -180,6 +180,8 @@ max-width: 366px;
 overflow: hidden;
 
 .left{
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 170px;
   justify-content: center;

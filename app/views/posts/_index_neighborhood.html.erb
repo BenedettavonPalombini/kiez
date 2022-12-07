@@ -1,5 +1,6 @@
 <div class="container bg-card justify-content-left">
-<%= image_tag "kiez-logo.svg", alt: "KIEZ logo", width: 35 %></div>
+  <%= image_tag "kiez-logo.svg", alt: "KIEZ logo", width: 35 %>
+</div>
 <div class="container text-center">
   <div>
     <%= link_to new_post_path(kind_of_post: "neighborhood"), class: "btn" do %>
@@ -50,7 +51,7 @@
        <% if post.photo.attached? %>
           <div class= "left">
             <%= cl_image_tag post.photo.key,  style: "object-fit: cover; height: inherit; width: inherit;" , alt: "post-picture", crop: :fill, gravity: :face %>
-        </div>
+          </div>
         <% end %>
         <div class= "right" style="padding: 10px">
           <div class="header">
