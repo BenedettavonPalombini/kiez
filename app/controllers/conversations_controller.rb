@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
   def create
     @conversation = Conversation.create
     @other_user = User.find(params[:user])
-    x =UserConversation.create(conversation: @conversation, user: @other_user)
+    x = UserConversation.create(conversation: @conversation, user: @other_user)
     y = UserConversation.create(conversation: @conversation, user: current_user)
     redirect_to conversation_path(@conversation)
   end

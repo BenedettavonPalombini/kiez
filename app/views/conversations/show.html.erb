@@ -11,8 +11,8 @@
           <%= render "messages/message", message: message %>
         </div>
       </div>
-    </div>
-<% end %>
+    <% end %>
+  </div>
 
   <%= simple_form_for [@conversation, @message],
     html: {class: "d-flex"} do |f|
