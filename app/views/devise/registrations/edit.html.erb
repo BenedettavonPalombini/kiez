@@ -5,7 +5,7 @@
         <div class="d-flex flex-row justify-content-center">
           <div class= "p-2">
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+              <%= cl_image_tag current_user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
             <% else %>
             <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
             <% end %>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <br>
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),data: {data_method: :patch}) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">
@@ -41,11 +41,13 @@
                         autofocus: true,
                         input_html: { autocomplete: "change profile picture" } %>
             <%= f.input :password,
+                        label: "New Password",
                         placeholder: "••••••",
                         hint: "leave it blank if you don't want to change it",
                         required: false,
                         input_html: { autocomplete: "new-password" } %>
             <%= f.input :password_confirmation,
+                        label: "New Password Confirmation",
                         placeholder: "••••••",
                         required: false,
                         input_html: { autocomplete: "new-password" } %>
