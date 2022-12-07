@@ -4,9 +4,45 @@
 }
 
 .col .show-p {
-  text-align: left;
+  text-align: justify;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 6px;
 }
 
 .col .show-header {
   font-size: calc(1rem + 0.9vw);
+  text-align: left;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 6px;
+}
+
+.avatar-line{
+  display:flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  margin-top: 6px
+}
+
+.name {
+  display: inline-block;
+  flex: none;
+  margin-left: 8px
+}
+
+.col .avatar{
+  align-self: flex-start;
+}
+
+.show-image {
+  border-radius: 50%;
+  height: 50px;
+  margin-left: 8px;
+}
+
+.show-button {
+  padding-left: 8px;
+  margin-bottom: 6px;
 }

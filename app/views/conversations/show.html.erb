@@ -11,8 +11,8 @@
           <%= render "messages/message", message: message %>
         </div>
       </div>
-    </div>
-<% end %>
+    <% end %>
+  </div>
 
   <%= simple_form_for [@conversation, @message],
     html: {class: "d-flex"} do |f|
@@ -22,6 +22,6 @@
       placeholder: "type your message here",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Send", class: "btn-default mb-3" %>
   <% end %>
 </div>

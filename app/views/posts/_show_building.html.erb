@@ -1,14 +1,14 @@
 <div class="container bg-card text-center mt-5">
   <div class="col-lg-2 col-md-4 col-sm-12 bg-card bcard card card-body card-trip no-outline">
-    <div class="row align-items-start">
-      <div class="col">
+    <div class="row avatar-line">
+      <div class="col avatar">
         <% if post.user.photo.attached? %>
-          <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+          <%= cl_image_tag post.user.photo.key, class: "image-fluid show-image", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
         <% else %>
-          <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+          <%= image_tag "user.jpg", class: "image-fluid show-image", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
         <% end %>
       </div>
-      <div class="col align-items-end">
+      <div class="name col">
         <%= "#{post.user.first_name} #{post.user.last_name}" %>
       </div>
     </div>
@@ -23,12 +23,12 @@
       </div>
     </div>
       <% if post.user == current_user %>
-    <div class="col">
-      <div class="btn btn-success"><%= link_to "edit post", edit_post_path(post) %></div>
+    <div class="col show-button">
+      <div class="btn btn-default"><%= link_to "Edit Post", edit_post_path(post) %></div>
     </div>
       <% else %>
-    <div class="col">
-    <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-success"  %>
+    <div class="col show-button">
+    <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-default"  %>
     </div>
       <% end %>
   </div>
