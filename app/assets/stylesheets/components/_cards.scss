@@ -11,6 +11,24 @@
   overflow: hidden;
   background: $light-mint;
   border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+// .user-name {
+//   margin: 25px;
+// }
+
+.photo-and-image {
+  display: flex;
+  max-width: inherit;
+}
+
+
+.inbox-card > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card-trip > img {
