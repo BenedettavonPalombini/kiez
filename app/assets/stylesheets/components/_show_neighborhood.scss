@@ -3,23 +3,23 @@
 }
 
 .firstone {
-  width:100%;
-  text-align:center;
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
   justify-content: center;
 }
 
 .firstone .category {
   float: right;
-  width: 100px;
 }
 
 .firstone .show-neighborhood-title {
   float: left;
-  width:100px;
+  width: 100px;
 }
 
 .secondone {
-  display:flex;
+  display: flex;
 }
 
 .secondone .show-neighborhood-picture {

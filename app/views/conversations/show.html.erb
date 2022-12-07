@@ -2,7 +2,8 @@
       data-controller="conversation-subscription"
       data-conversation-subscription-conversation-id-value="<%= @conversation.id %>"
       data-conversation-subscription-current-user-id-value="<%= current_user.id %>">
-  <h1 class="text-center">Chat</h1>
+  <h1 class="text-center">Chat with <%= @conversation.other_users(current_user)[0].first_name %></h1>
+
 
   <div class="messages" data-conversation-subscription-target="messages">
     <% @conversation.messages.each do |message| %>
@@ -17,7 +18,7 @@
   <%= simple_form_for [@conversation, @message],
     html: {class: "d-flex"} do |f|
   %>
-    <%= f.input :content,
+    <%= f.input :content, :as => :text,
       label: false,
       placeholder: "type your message here",
       wrapper_html: {class: "flex-grow-1"}

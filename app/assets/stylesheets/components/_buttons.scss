@@ -17,6 +17,7 @@ line-height: 15px;
 }
 
 .cherry-big {
+
 word-wrap: break-word;
 align-items: center;
 gap: 8px;
@@ -30,8 +31,9 @@ line-height: 15px;
 
 
 .red-round {
-
-padding: 5px;
+display: flex;
+align-items: center;
+padding: 9px 9px 9px;
 background: $light-cherry;
 border-radius: 46px;
 line-height: 15px;
@@ -39,6 +41,17 @@ line-height: 15px;
     color: $black;
   }
 }
+
+.show-red-round {
+  align-items: center;
+  padding: 9px 9px 9px;
+  background: $light-cherry;
+  border-radius: 46px;
+  line-height: 15px;
+    .h1, .h2, .h3, .h4, .h5, .p, {
+      color: $black;
+    }
+  }
 
 .btn-default {
   font-size: 13px;
