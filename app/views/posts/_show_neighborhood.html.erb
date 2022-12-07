@@ -1,47 +1,62 @@
-<div class="container mt-4 bg-card text-center">
-  <div class="row">
-    <div class="col-12">
-      <div class="card no-outline card-body h-100">
-        <h2>Details for <%= post.title %></h2>
-          <div class="row align-items-start">
-            <div class= "col">
+<div class="container mt-4">
+  <div class="col-lg-2 col-md-4 col-sm-12 bg-card bcard card card-body card-trip no-outline">
+    <div class="wrapper-show">
+      <div class="firstone">
+        <div class="show-neighborhood-title">
+          <h2><%= post.title %></h2>
+        </div>
+         <div class= "category">
+            <%= post.category %>
+        </div>
+      </div>
+      <%= post.created_at.strftime("%m/%d/%Y") %>
+          <div class="secondone">
+            <div class= "show-neighborhood-picture">
                 <% if post.photo.attached? %>
-                  <%= cl_image_tag post.photo.key, height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                  <%= cl_image_tag post.photo.key, height: 150, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
                 <% else %>
-                <%= image_tag "chair.jpg", height: 30, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                <%= image_tag "chair.jpg", height: 150, class: "image-fluid", style: "object-fit: cover border-radius: 2px", alt: "user-picture", crop: :fill, gravity: :face %>
                 <% end %>
             </div>
-            <div class= "col">
-              <%= post.category %>
-            </div>
-          </div>
-            <div class="row align-items-center">
-              <div class= "col">
-                <%= post.created_at.strftime("%m/%d/%Y") %>
+            <div class="right-of-picture">
+              <div class="show-neighborhood-content">
+                <%= post.content  %>
+              </div>
+              <div class="bottom-of-content">
+                <div class="show-neighborhood-duration">
+                  <%= post.duration %>
+                </div>
+                <div class="show-neighborhood-price">
+                  <%= post.price %>
+                </div>
               </div>
             </div>
-          <div class="row">
-            <div class="col align-self-center">
-                <%= post.content  %>
-            </div>
           </div>
-          <div class="row">
-            <div class="col align-self-end">
-                <%= post.duration %>
-                <%= post.price %>
+          <div class="thirdone">
+            <div class="avatar-line">
+              <div class="show-neighborhood-avatar">
+                <% if post.user.photo.attached? %>
+                  <%= cl_image_tag post.user.photo.key, class: "image-fluid neighborhood-profilepic", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                <% else %>
+                  <%= image_tag "user.jpg", class: "image-fluid neighborhood-profilepic", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                <% end %>
+              </div>
+              <div class="show-neighborhood-name">
+                <%= "#{post.user.first_name} #{post.user.last_name}" %>
+              </div>
             </div>
-            </div>
+            <div class="show-neighborhood-edit">
               <% if post.user == current_user %>
-            <div class="col">
-              <div class="btn btn-default"><%= link_to "Edit Post", edit_post_path(post) %></div>
-            </div>
+                <div class="col">
+                  <div class="btn btn-default"><%= link_to "Edit Post", edit_post_path(post) %></div>
+                </div>
               <% else %>
-            <div class="col">
-              <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-default"  %>
-            </div>
+                <div class="col">
+                  <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-default"  %>
+                </div>
               <% end %>
+            </div>
           </div>
-      </div>
     </div>
   </div>
 </div>
