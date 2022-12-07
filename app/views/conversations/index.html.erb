@@ -3,16 +3,6 @@
   <h1 class="d-flex justify-content-center"> Inbox </h1>
 
 
-<<<<<<< HEAD
-  <% @conversations.each do |conversation| %>
-      <% if conversation.other_users(current_user).empty? %>
-        <%= nil %>
-      <% else %>
-        <h2> <%= link_to conversation.other_users(current_user)[0].first_name, conversation_path(conversation) %> </h2>
-      <% end  %>
-  <% end %>
-</div>
-=======
 <% @conversations.each do |conversation| %>
   <div class="w2-container">
     <div class= "card no-outline">
@@ -30,4 +20,3 @@
     </div>
   </div>
 <% end %>
->>>>>>> d01f6cc603261f32235203a05734ccf09c6129c3
