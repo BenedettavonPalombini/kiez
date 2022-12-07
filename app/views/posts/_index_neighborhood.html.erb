@@ -20,17 +20,17 @@
   </div>
 </div>
 <div class="container grid">
-  <div class= "btn btn-success"><%=link_to "Lost Item", posts_path(:category => "Lost Item", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Lost Pet", posts_path(:category => "Lost Pet", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Giveaway", posts_path(:category => "Giveaway", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Moving", posts_path(:category => "Moving", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Announcement", posts_path(:category => "Announcement", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Furniture Assembly", posts_path(:category => "Furniture Assembly", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Appliance Repair", posts_path(:category => "Appliance Repair", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Housesitting", posts_path(:category => "Housesitting", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Language Exchange", posts_path(:category => "Language Exchange", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Recommendation", posts_path(:category => "Recommendation", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn btn-success"><%=link_to "Workshop", posts_path(:category => "Workshop", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Lost Item", posts_path(:category => "Lost Item", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Lost Pet", posts_path(:category => "Lost Pet", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Giveaway", posts_path(:category => "Giveaway", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Moving", posts_path(:category => "Moving", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Announcement", posts_path(:category => "Announcement", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Furniture Assembly", posts_path(:category => "Furniture Assembly", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Appliance Repair", posts_path(:category => "Appliance Repair", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Housesitting", posts_path(:category => "Housesitting", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Language Exchange", posts_path(:category => "Language Exchange", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Recommendation", posts_path(:category => "Recommendation", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn red-round"><%=link_to "Workshop", posts_path(:category => "Workshop", :kind_of_post => "neighborhood")%></div>
 </div>
 <div class="container text-center">
   <div class= "m-3 btn btn-success"><%=link_to "All Projects Near Me", posts_path( :kind_of_post => "neighborhood")%></div>
@@ -56,7 +56,7 @@
         </div>
         <div class= "right" style="padding: 10px">
           <div class="header">
-            <div class="category"><h5><%= post.category %></h5></div>
+            <div class="red-round"><h5><%= post.category %></h5></div>
             <% bookmark = Bookmark.find_by(user: current_user, post: post) %>
             <i class="fa-<%= bookmark.present? ? "solid" : "regular" %> fa-bookmark"
              data-controller="bookmark"

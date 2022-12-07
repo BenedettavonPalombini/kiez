@@ -147,10 +147,13 @@ max-height: 350px;
 }
 }
 
-.category {
+.red-round {
   background-color: $light-cherry;
   border-radius: 15px;
   padding: 5px;
+  .h1, .h2, h3, h4, h5, p, {
+    color: $black;
+  }
 }
 
 
