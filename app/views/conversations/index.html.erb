@@ -3,17 +3,9 @@
 
 
 <% @conversations.each do |conversation| %>
-    <div class= "card no-outline">
-      <div class= "bcard card-body cards">
-          <div class="row align-items-start">
-            <% if conversation.other_users(current_user).empty? %>
-              <%= nil %>
-            <% else %>
-              <h2><%= conversation.other_users(current_user)[0].first_name %> </h2>
-              <p> <%= conversation.messages.last&.content %> </p>
-              <p> <%= link_to "reply", conversation_path(conversation) %> </p>
-            <% end  %>
-          </div>
-      </div>
-    </div>
+    <% if conversation.other_users(current_user).empty? %>
+      <%= nil %>
+    <% else %>
+      <h2> <%= link_to conversation.other_users(current_user)[0].first_name, conversation_path(conversation) %> </h2>
+    <% end  %>
 <% end %>
