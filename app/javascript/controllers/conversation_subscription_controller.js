@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
   static values = { conversationId: Number, currentUserId: Number }
-  static targets = ["messages"]
+  static targets = ["messages", "input"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -25,6 +25,7 @@ export default class extends Controller {
   #insertMessageAndScrollDown(data) {
     console.log(this.messagesTarget)
     console.log(data)
+    this.inputTarget.value = ""
     const currentUserIsSender = this.currentUserIdValue === data.sender_id
     const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement);
