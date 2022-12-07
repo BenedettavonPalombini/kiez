@@ -2,39 +2,41 @@
   <%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 150 %>
   <h1> Bulletin Board </h1>
   <h2> <%= current_user.address.split(",")[0] %> </h2>
-  <div class="btn btn-success"><%= link_to "Create a new post", new_post_path(kind_of_post: "building") %> </div>
-
-
-  <% posts.each do |post| %>
-    <div class= "card no-outline">
-        <div class= "bcard card-body cards">
-          <div class="row align-items-start">
-            <div class="col">
-            <% if post.user.photo.attached? %>
-              <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-            <% else %>
-             <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-            <% end %>
-            </div>
-            <div class="col">
-              <%= "#{post.user.first_name} #{post.user.last_name}" %>
-            </div>
-            <div class="col">
-             <i class="bi bi-bookmark"></i>
-             <%= link_to "bookmark", post_bookmarks_path(post), data: { turbo_method: :post } %>
+    <div>
+      <%= link_to new_post_path(kind_of_post: "building"), class: "btn" do %>
+      <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </div>
+      <% posts.each do |post| %>
+        <div class= "card no-outline">
+            <div class= "bcard card-body cards">
+              <div class="row align-items-start">
+                <div class="col">
+                <% if post.user.photo.attached? %>
+                  <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                <% else %>
+                <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                <% end %>
+                </div>
+                <div class="col">
+                  <%= "#{post.user.first_name} #{post.user.last_name}" %>
+                </div>
+                <div class="col">
+                <i class="bi bi-bookmark"></i>
+                <%= link_to "bookmark", post_bookmarks_path(post), data: { turbo_method: :post } %>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col mt-2">
+                  <%= link_to post.title, post_path(post) %>
+                </div>
+              </div>
+              <div class="row align-items-end">
+                <div class="col">
+                  <%= post.content %>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row align-items-center">
-            <div class="col mt-2">
-              <%= link_to post.title, post_path(post) %>
-            </div>
-          </div>
-           <div class="row align-items-end">
-            <div class="col">
-              <%= post.content %>
-            </div>
-          </div>
-        </div>
-      </div>
-  <% end %>
-</div>
+      <% end %>
+    </div>

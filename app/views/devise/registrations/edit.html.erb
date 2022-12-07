@@ -1,7 +1,25 @@
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center m-3">
   <div class="col-lg-4">
     <div class="container bg-card mt-2 form-login">
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <h2>Edit Your <%= resource_name.to_s.humanize %> Profile </h2>
+        <div class="d-flex flex-row justify-content-center">
+          <div class= "p-2">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% else %>
+            <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% end %>
+          </div>
+          <div class="p-2">
+            <h3> <%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+          </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+          <div class="p-2">
+            <h4> <%= current_user.address %></h4>
+          </div>
+        </div>
+        <br>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
 
@@ -15,31 +33,35 @@
             <%= f.input :address,
                         required: false,
                         autofocus: true,
-                        input_html: { autocomplete: "address", }
-                        hint: "Warning: Changing your address this will change your building!"%>
+                        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "mapboxgl-ctrl-geocoder"},
+                        hint: "Warning: Changing your address will change your building!"%>
+            <%= f.input :photo, as: :file,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "change profile picture" } %>
             <%= f.input :password,
+                        placeholder: "••••••",
                         hint: "leave it blank if you don't want to change it",
                         required: false,
                         input_html: { autocomplete: "new-password" } %>
             <%= f.input :password_confirmation,
+                        placeholder: "••••••",
                         required: false,
                         input_html: { autocomplete: "new-password" } %>
             <%= f.input :current_password,
+                        placeholder: "••••••",
                         hint: "we need your current password to confirm your changes",
                         required: true,
                         input_html: { autocomplete: "current-password" } %>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Update" %>
+            <%= f.button :submit, "Update", class: "btn btn-info" %>
           </div>
         <% end %>
 
-        <h3>Cancel my account</h3>
-
         <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-        <%= link_to "Back", :back %>
     </div>
   </div>
 </div>

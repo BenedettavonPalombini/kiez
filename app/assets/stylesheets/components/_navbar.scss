@@ -20,10 +20,6 @@
   width: 40px;
 }
 
-.fa-solid {
-  color: #FFCDCD;
-}
-
 .fa-regular {
   color: #FFCDCD;
 }
@@ -42,11 +38,25 @@
   }
 }
 
-.fa-regular:hover {
+.fa-circle:hover {
   color: #ffffff !important;
   font-size: 30px;
 }
 
+.fa-building:hover {
+  color: #ffffff !important;
+  font-size: 30px;
+}
+
+.fa-map:hover {
+  color: #ffffff !important;
+  font-size: 30px;
+}
+
+.fa-comment:hover {
+  color: #ffffff !important;
+  font-size: 30px;
+}
 
 .icon-box {
   height: 100%;
