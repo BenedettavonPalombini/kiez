@@ -13,3 +13,37 @@ height: 35px;
 background: rgba(255, 100, 100, 0.86);
 border-radius: 46px;
 }
+
+.btn-default {
+  font-size: 13px;
+  color:#417B68;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid $light-mint;
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-default:hover {
+  color: #417B68;
+  background: $mint;
+  border: 2px solid ;
+}
+
+.btn-messaging {
+  font-size: 13px;
+  color:#417B68;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid $light-mint;
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-messaging:hover {
+  color: #417B68;
+  background: $mint;
+  border: 2px solid ;
+}
