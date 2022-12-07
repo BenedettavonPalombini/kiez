@@ -1,26 +1,28 @@
-<h1 class="d-flex justify-content-center"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 150 %></h1>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://assets.deutschlandfunk.de/FILE_2a06dd2cb506ad78ebe3d720b3d2fb89/1920x1080.jpg?t=1622298009826);">
+<div class="container bg-card text-center">
+  <div class="d-flex justify-content-left"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 95 %></div>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://assets.deutschlandfunk.de/FILE_2a06dd2cb506ad78ebe3d720b3d2fb89/1920x1080.jpg?t=1622298009826);">
 
-<h2>Welcome to <%= current_user.address.split(",")[0]%></h2>
+  <h2>Welcome to <%= current_user.address.split(",")[0]%></h2>
 
-<% @building_user.each do |user| %>
-  <div class= "card no-outline">
-    <div class= "bcard">
-      <div class="row align-items-start">
-        <div class="col">
-          <% if user.photo.attached? %>
-            <%= cl_image_tag user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-          <% else %>
-          <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-          <% end %>
-        </div>
-        <div class="col">
-          <%= "#{user.first_name} #{user.last_name}" %>
-        </div>
-        <div class="col">
-          <%= link_to "Message", conversations_path(user: user), data: { turbo_method: :post}, class: "btn btn-success"  %>
+  <% @building_user.each do |user| %>
+    <div class= "card no-outline">
+      <div class= "bcard">
+        <div class="row align-items-start">
+          <div class="col">
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% else %>
+            <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+            <% end %>
+          </div>
+          <div class="col">
+            <%= "#{user.first_name} #{user.last_name}" %>
+          </div>
+          <div class="col">
+            <%= link_to "Message", conversations_path(user: user), data: { turbo_method: :post}, class: "btn btn-success"  %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+ </div> 

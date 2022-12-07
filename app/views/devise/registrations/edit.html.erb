@@ -1,69 +1,67 @@
-<div class="row justify-content-center m-3">
-  <div class="col-lg-4">
-    <div class="container bg-card mt-2 form-login">
-      <h2>Edit Your <%= resource_name.to_s.humanize %> Profile </h2>
-        <div class="d-flex flex-row justify-content-center">
-          <div class= "p-2">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-            <% else %>
-            <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-            <% end %>
+      <div class="container bg-card mt-2 form-login"">
+        <h2>Edit Your <%= resource_name.to_s.humanize %> Profile </h2>
+          <div class="d-flex flex-row justify-content-center">
+            <div class= "p-2">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+              <% else %>
+              <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+              <% end %>
+            </div>
+            <div class="p-2">
+              <h3> <%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+            </div>
           </div>
-          <div class="p-2">
-            <h3> <%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+          <div class="d-flex flex-row justify-content-center">
+            <div class="p-2">
+              <h4> <%= current_user.address %></h4>
+            </div>
           </div>
-        </div>
-        <div class="d-flex flex-row justify-content-center">
-          <div class="p-2">
-            <h4> <%= current_user.address %></h4>
+          <br>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),data: {data_method: :patch}) do |f| %>
+            <%= f.error_notification %>
+          <div class="justify-content-left">
+            <div class="form-inputs text-align-left">
+              <%= f.input :email, required: true, autofocus: true %>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+
+              <%= f.input :address,
+                          required: false,
+                          autofocus: true,
+                          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "mapboxgl-ctrl-geocoder"},
+                          hint: "Warning: Changing your address will change your building!"%>
+              <%= f.input :photo, as: :file,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "change profile picture" } %>
+              <%= f.input :password,
+                          label: "New Password",
+                          placeholder: "••••••",
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          label: "New Password Confirmation",
+                          placeholder: "••••••",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :current_password,
+                          placeholder: "••••••",
+                          hint: "we need your current password to confirm your changes",
+                          required: true,
+                          input_html: { autocomplete: "current-password" } %>
+            </div>
           </div>
-        </div>
-        <br>
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),data: {data_method: :patch}) do |f| %>
-          <%= f.error_notification %>
+            <div class="form-actions">
+              <%= f.button :submit, "Update", class: "btn btn-info" %>
+            </div>
+          <% end %>
 
-          <div class="form-inputs">
-            <%= f.input :email, required: true, autofocus: true %>
-
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-            <% end %>
-
-            <%= f.input :address,
-                        required: false,
-                        autofocus: true,
-                        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-                        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "mapboxgl-ctrl-geocoder"},
-                        hint: "Warning: Changing your address will change your building!"%>
-            <%= f.input :photo, as: :file,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "change profile picture" } %>
-            <%= f.input :password,
-                        label: "New Password",
-                        placeholder: "••••••",
-                        hint: "leave it blank if you don't want to change it",
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
-                        label: "New Password Confirmation",
-                        placeholder: "••••••",
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :current_password,
-                        placeholder: "••••••",
-                        hint: "we need your current password to confirm your changes",
-                        required: true,
-                        input_html: { autocomplete: "current-password" } %>
-          </div>
-
-          <div class="form-actions">
-            <%= f.button :submit, "Update", class: "btn btn-info" %>
-          </div>
-        <% end %>
-
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      </div>
     </div>
   </div>
-</div>
