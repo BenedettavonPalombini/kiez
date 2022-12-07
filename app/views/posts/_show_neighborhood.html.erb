@@ -33,11 +33,11 @@
             </div>
               <% if post.user == current_user %>
             <div class="col">
-              <div class="btn btn-success"><%= link_to "edit post", edit_post_path(post) %></div>
+              <div class="btn btn-default"><%= link_to "Edit Post", edit_post_path(post) %></div>
             </div>
               <% else %>
             <div class="col">
-              <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-success"  %>
+              <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-default"  %>
             </div>
               <% end %>
           </div>

@@ -7,7 +7,7 @@ html: { data: { action: "turbo:submit-end->conversation-subscription#resetForm" 
     placeholder: "type your message here",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= f.submit "Send", class: "btn-default mb-3" %>
 
     <% @conversation.messages.each do |message| %>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
