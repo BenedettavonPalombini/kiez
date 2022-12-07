@@ -1,9 +1,11 @@
+
 <div class="container">
   <div class="container bg-card text-center">
     <div class="justify-content-left">
     <%= image_tag "kiez-logo.svg", alt: "KIEZ logo", width: 35 %>
     </div>
     <h2> <%= current_user.address.split(",")[0] %> </h2>
+
     <div>
       <%= link_to new_post_path(kind_of_post: "building"), class: "btn" do %>
       <i class="fa-solid fa-plus"></i>
