@@ -37,6 +37,8 @@ class PostsController < ApplicationController
         posts: user.posts
       }
     end
+
+    @posts = @posts.order(created_at: :desc)
   end
 
   def show

@@ -1,11 +1,24 @@
-<h1 class="d-flex justify-content-center"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 150 %></h1>
-<h1 class="d-flex justify-content-center"> Inbox </h1>
+<div class="container bg-card text-center">
+  <div class="d-flex justify-content-left"><%= image_tag "kiez-logo.svg", alt: "KIEZ logo", width: 35 %></div>
+  <h1 class="d-flex justify-content-center"> Inbox </h1>
 
-
+<% if @conversations.empty? %>
+  <p class="d-flex justify-content-center"> You have no messages </p>
+<% end %>
 <% @conversations.each do |conversation| %>
-    <% if conversation.other_users(current_user).empty? %>
-      <%= nil %>
-    <% else %>
-      <h2> <%= link_to conversation.other_users(current_user)[0].first_name, conversation_path(conversation) %> </h2>
-    <% end  %>
+  <div class="w2-container">
+    <div class= "card no-outline">
+      <div class= "bcard inbox-card cards">
+          <div class="row align-items-start">
+            <% if conversation.other_users(current_user).empty? %>
+              <%= nil %>
+            <% else %>
+              <h2><%= link_to conversation.other_users(current_user)[0].first_name, conversation_path(conversation) %> </h2>
+              <p> <%= link_to conversation.messages.last&.content, conversation_path(conversation) %> </p>
+              <p> <%= link_to "reply", conversation_path(conversation) %> </p>
+            <% end  %>
+          </div>
+      </div>
+    </div>
+  </div>
 <% end %>
