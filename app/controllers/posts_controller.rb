@@ -9,14 +9,14 @@ class PostsController < ApplicationController
     elsif params[:kind_of_post] == "neighborhood" && params.has_key?("category")
       # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
-      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
+      @posts = Post.geocoded.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
       @posts = @posts.select do |post|
         post.category == params[:category]
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 14.days.ago)
       end
     elsif params[:kind_of_post] == "neighborhood"
-      @posts = Post.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
+      @posts = Post.geocoded.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
     end
 
     if params[:query].present?
@@ -30,11 +30,12 @@ class PostsController < ApplicationController
 
     @user_location = [current_user.longitude, current_user.latitude]
 
-    @markers = @users.map do |user|
+    @markers = @posts.map do |post|
       {
-        lat: user.latitude,
-        lng: user.longitude,
-        posts: user.posts
+        lat: post.latitude,
+        lng: post.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {post: post}),
+        image_url: helpers.asset_url("kiez-logo.png")
       }
     end
   end

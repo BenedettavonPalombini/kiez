@@ -5,15 +5,6 @@
         <% if user_signed_in? %>
         <div class="icon-box d-flex justify-content-center">
         <li class="icon-item active">
-            <%= link_to root_path, class: "nav-link" do %>
-              <% if params[:controller] == "pages" && params[:action] == "home" %>
-                <i class="fa-regular fa-circle" style="color:#FFFFFF; font-size:35px"></i>
-              <% else %>
-                <i class="fa-regular fa-circle"></i>
-              <% end %>
-            <% end %>
-          </li>
-        <li class="icon-item active">
             <%= link_to "/posts?kind_of_post=building", class: "nav-link" do %>
               <% if params[:controller] == "posts" && params[:action] == "index" && params[:kind_of_post] == "building" %>
                 <i class="fa-regular fa-building" style="color:#FFFFFF; font-size:35px"></i>
@@ -43,8 +34,10 @@
           <li class="icon-item dropup">
           <i class="fa-regular fa-user" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to "Your Neighbors", root_path, data: {turbo: :false}, class: "dropdown-item" %>
               <%= link_to "Edit Your Profile", edit_user_registration_path, data: {turbo: :false}, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          </li>
           </li>
           </div>
         <% else %>

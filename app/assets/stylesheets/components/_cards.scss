@@ -59,9 +59,6 @@ margin: 10px;
 
 position: relative;
 min-height: 200px;
-
-
-
 }
 
 
@@ -108,23 +105,60 @@ min-height: 200px;
 
 // taken from
 
+//from card-product mockup
+// .card-product {
+//   overflow: hidden;
+//   height: 120px;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//   display: flex;
+//   align-items: center;
+// }
+
+// .card-product img {
+//   height: 100%;
+//   width: 120px;
+//   object-fit: cover;
+// }
+
+// .title {
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// .card-product h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
+
+// .card-product p {
+//   font-size: 12px;
+//   line-height: 1.4;
+//   opacity: .7;
+//   margin-bottom: 0;
+//   margin-top: 8px;
+// }
+
+// .card-product .card-product-infos {
+//   padding: 16px;
+// }
 
 
 .custom-card {
 display: flex;
-justify-content: space-between;
-align-items: center;
+align-items: flex-start;
 flex-direction: row;
 background: $light-mint;
 border-radius: 15px;
-min-height: 300px;
-max-height: 350px;
+max-height: 170px;
+max-width: 366px;
+overflow: hidden;
+
 .left{
-  background-image: url("https://images.unsplash.com/photo-1670261140885-30ae06e26b2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2572&q=80");
   height: 100%;
-  width: 267%;
-  background-size: cover;
-  background-position: center;
+  width: 170px;
+  justify-content: center;
   overflow: hidden;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
@@ -133,6 +167,7 @@ max-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: inherit;
   // align-items: ;
   .header {
     display: flex;
@@ -144,17 +179,16 @@ max-height: 350px;
     justify-content: space-between;
     align-items: center;
   }
+  .text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 13ch;
+}
 }
 }
 
-.red-round {
-  background-color: $light-cherry;
-  border-radius: 15px;
-  padding: 5px;
-  .h1, .h2, .h3, .h4, .h5, .p, {
-    color: $black;
-  }
-}
 
 
 .wrapper {
