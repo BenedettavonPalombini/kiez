@@ -24,50 +24,6 @@
             <div class="form-inputs text-align-left">
               <%= f.input :email, required: true, autofocus: true %>
 
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-              <% end %>
-
-              <%= f.input :address,
-                          required: false,
-                          autofocus: true,
-                          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-                          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "mapboxgl-ctrl-geocoder"},
-                          hint: "Warning: Changing your address will change your building!"%>
-              <%= f.input :photo, as: :file,
-                          required: true,
-                          autofocus: true,
-                          input_html: { autocomplete: "change profile picture" } %>
-              <%= f.input :password,
-                          label: "New Password",
-                          placeholder: "••••••",
-                          hint: "leave it blank if you don't want to change it",
-                          required: false,
-                          input_html: { autocomplete: "new-password" } %>
-              <%= f.input :password_confirmation,
-                          label: "New Password Confirmation",
-                          placeholder: "••••••",
-                          required: false,
-                          input_html: { autocomplete: "new-password" } %>
-              <%= f.input :current_password,
-                          placeholder: "••••••",
-                          hint: "we need your current password to confirm your changes",
-                          required: true,
-                          input_html: { autocomplete: "current-password" } %>
-            </div>
-          </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Update", class: "btn btn-info" %>
-            </div>
-          <% end %>
-
-<<<<<<< HEAD
-          <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-      </div>
-=======
-          <div class="form-inputs">
-            <%= f.input :email, required: true, autofocus: true %>
-
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
@@ -106,6 +62,5 @@
         <% end %>
 
         <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
->>>>>>> d01f6cc603261f32235203a05734ccf09c6129c3
     </div>
   </div>
