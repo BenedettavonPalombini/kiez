@@ -28,15 +28,6 @@ hanna = User.create!(email: "test2@test.com",
 
 hanna.save
 
-madeleine = User.create!(email: "test3@test.com",
-            password: "123456",
-            first_name: "Madeleine",
-            last_name: " McDonald",
-            address: "Heilbronner Str. 11, 10779 Berlin",
-            verified: "true"
-)
-
-madeleine.save
 
 tobias = User.create!(email: "test4@test.com",
             password: "123456",
@@ -107,6 +98,17 @@ benedetta = User.create!(email: "test30@test.com",
 )
 
 benedetta.save!
+
+
+madeleine = User.create!(email: "test3@test.com",
+                  password: "123456",
+                  first_name: "Madeleine",
+                  last_name: " McDonald",
+                  address: "Landshuter Str. 17, 10779 Berlin",
+                  verified: "true"
+)
+
+madeleine.save
 
 mitja = User.create!(email: "test31@test.com",
                     password: "123456",
@@ -214,7 +216,7 @@ new_post = Post.create!(title: "Does anyone want fruit?",
                         solved: false,
                         user: madeleine,
                         kind: "building",
-                        address: "Heilbronner Str. 11, 10779 Berlin"
+                        address: madeleine.address
 )
 
 new_post.save!
@@ -476,7 +478,7 @@ new_post = Post.new(title: "Looking for a German Language Tutor.",
                     price: 20,
                     user: madeleine,
                     kind: "neighborhood",
-                    address: "Heilbronner Str. 11, 10779 Berlin"
+                    address: madeleine.address
   # image: '/images/chair.jpg'
 )
 

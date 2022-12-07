@@ -20,25 +20,25 @@
   </div>
 </div>
 <div class="container grid">
-  <div class= "btn red-round"><%=link_to "Lost Item", posts_path(:category => "Lost Item", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Lost Pet", posts_path(:category => "Lost Pet", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Giveaway", posts_path(:category => "Giveaway", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Moving", posts_path(:category => "Moving", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Announcement", posts_path(:category => "Announcement", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Furniture Assembly", posts_path(:category => "Furniture Assembly", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Appliance Repair", posts_path(:category => "Appliance Repair", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Housesitting", posts_path(:category => "Housesitting", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Language Exchange", posts_path(:category => "Language Exchange", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Recommendation", posts_path(:category => "Recommendation", :kind_of_post => "neighborhood")%></div>
-  <div class= "btn red-round"><%=link_to "Workshop", posts_path(:category => "Workshop", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Lost Item", posts_path(:category => "Lost Item", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Lost Pet", posts_path(:category => "Lost Pet", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Giveaway", posts_path(:category => "Giveaway", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Moving", posts_path(:category => "Moving", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Announcement", posts_path(:category => "Announcement", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Furniture Assembly", posts_path(:category => "Furniture Assembly", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Appliance Repair", posts_path(:category => "Appliance Repair", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Housesitting", posts_path(:category => "Housesitting", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Language Exchange", posts_path(:category => "Language Exchange", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Recommendation", posts_path(:category => "Recommendation", :kind_of_post => "neighborhood")%></div>
+  <div class= "btn cherry-back"><%=link_to "Workshop", posts_path(:category => "Workshop", :kind_of_post => "neighborhood")%></div>
 </div>
 <div class="container text-center">
-  <div class= "m-3 btn btn-success"><%=link_to "All Projects Near Me", posts_path( :kind_of_post => "neighborhood")%></div>
+  <div class= "m-3 btn cherry-big"><%=link_to "All Projects Near Me", posts_path( :kind_of_post => "neighborhood")%></div>
 </div>
 <div class="container text-center">
-  <div style="width: 100%; height: 300px;"
+  <div style="width: 100%; height: 280px;"
     data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-markers-value="<%=@markers.to_json%>"
     data-map-user-location-value="<%= @user_location %>"
     data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"]%>">
   </div>
@@ -47,28 +47,30 @@
   <div class="wrapper">
     <% posts.each do |post| %>
       <div class="custom-card">
-        <div class= "left">
-            <%# <% if post.photo.attached? %>
-              <%# <%= cl_image_tag post.photo.key,  style: "object-fit: cover; height: 150px;", alt: "post-picture", crop: :fill, gravity: :face %>
-            <%# <% else %>
-              <%# <%= image_tag "chair.jpg", style: "object-fit: cover; height: 150px; margin-right: 15px; ", alt: "post-picture", crop: :fill, gravity: :face %>
-            <%# <% end %>
+       <% if post.photo.attached? %>
+          <div class= "left">
+            <%= cl_image_tag post.photo.key,  style: "object-fit: cover; height: inherit; width: inherit;" , alt: "post-picture", crop: :fill, gravity: :face %>
         </div>
+        <% end %>
         <div class= "right" style="padding: 10px">
           <div class="header">
-            <div class="red-round"><h5><%= post.category %></h5></div>
-            <% bookmark = Bookmark.find_by(user: current_user, post: post) %>
-            <i class="fa-<%= bookmark.present? ? "solid" : "regular" %> fa-bookmark"
-             data-controller="bookmark"
-             data-action="click->bookmark#change"
-             data-bookmark-id="<%= bookmark&.id  %>"
-             data-post-id="<%= post.id %>"
-             data-scrf-token="<%= form_authenticity_token %>"
-             ></i>
+            <div>
+              <p class="red-round"><%= post.category %></p>
+            </div>
+            <div>
+              <% bookmark = Bookmark.find_by(user: current_user, post: post) %>
+              <i class="fa-<%= bookmark.present? ? "solid" : "regular" %> fa-bookmark"
+               data-controller="bookmark"
+               data-action="click->bookmark#change"
+               data-bookmark-id="<%= bookmark&.id  %>"
+               data-post-id="<%= post.id %>"
+               data-scrf-token="<%= form_authenticity_token %>"
+               ></i>
+            </div>
           </div>
-          <h5><%= link_to post.title, post_path(post) %></h5>
-          <div class= "card-footer">
-            <p><%= post.content %></p>
+              <h5><%= link_to post.title, post_path(post) %></h5>
+            <div class= "card-footer">
+            <p class="text"><%= post.content %></p>
           </div>
         </div>
       </div>

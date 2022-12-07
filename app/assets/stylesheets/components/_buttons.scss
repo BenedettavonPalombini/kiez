@@ -1,17 +1,43 @@
 
-.my-name {
-  display: flex;
+.cherry-back {
+display: flex;
 flex-direction: row;
+word-wrap: break-word;
 align-items: center;
-padding: 1px 8px 4px;
+padding: px 8px 4px;
 gap: 8px;
+white-space: nowrap;
 
 position: relative;
-width: 62px;
 height: 35px;
 
-background: rgba(255, 100, 100, 0.86);
+background: $light-cherry;
 border-radius: 46px;
+line-height: 15px;
+}
+
+.cherry-big {
+word-wrap: break-word;
+align-items: center;
+gap: 8px;
+white-space: nowrap;
+position: relative;
+background: $cherry;
+border-radius: 46px;
+line-height: 15px;
+
+}
+
+
+.red-round {
+
+padding: 5px;
+background: $light-cherry;
+border-radius: 46px;
+line-height: 15px;
+  .h1, .h2, .h3, .h4, .h5, .p, {
+    color: $black;
+  }
 }
 
 .btn-default {

@@ -1,8 +1,11 @@
-<div class="container bg-card text-center">
-  <div class="d-flex justify-content-left"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 95 %></div>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://assets.deutschlandfunk.de/FILE_2a06dd2cb506ad78ebe3d720b3d2fb89/1920x1080.jpg?t=1622298009826);">
 
-  <h2>Welcome to <%= current_user.address.split(",")[0]%></h2>
+<div class="hbanner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80);">
+  <div class="container">
+   <div class="d-flex justify-content-left"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 95 %></div>
+    <h1><h2>Welcome to <%= current_user.address.split(",")[0]%></h2></h1>
+    <a class="btn btn-default" >
+  </div>
+</div>
 
 <% @building_user.each do |user| %>
   <div class= "card no-outline">
