@@ -1,25 +1,25 @@
 <div class="container bg-card text-center mt-5">
-  <div class="card card body no-outline"></div>
+  <div class="col-lg-2 col-md-4 col-sm-12 bg-card bcard card card-body card-trip no-outline">
     <div class="row align-items-start">
       <div class="col">
-      <% if post.user.photo.attached? %>
-        <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-      <% else %>
-        <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-      <% end %>
+        <% if post.user.photo.attached? %>
+          <%= cl_image_tag post.user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+        <% else %>
+          <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+        <% end %>
       </div>
-      <div class="col">
+      <div class="col align-items-end">
         <%= "#{post.user.first_name} #{post.user.last_name}" %>
       </div>
     </div>
     <div class="row align-items-center">
       <div class="col mt-2">
-        <h2><%= post.title %></h2>
+        <h2 class="show-header"><%= post.title %></h2>
       </div>
     </div>
     <div class="row align-items-end">
       <div class="col">
-        <p><%= post.content %></p>
+        <p class="show-p"><%= post.content %></p>
       </div>
     </div>
       <% if post.user == current_user %>

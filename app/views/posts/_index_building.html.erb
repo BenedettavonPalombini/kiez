@@ -22,10 +22,15 @@
                   <%= "#{post.user.first_name} #{post.user.last_name}" %>
                 </div>
                 <div class="col">
-                <i class="bi bi-bookmark"></i>
-                <%= link_to "bookmark", post_bookmarks_path(post), data: { turbo_method: :post } %>
+                  <% bookmark = Bookmark.find_by(user: current_user, post: post) %>
+                  <i class="fa-<%= bookmark.present? ? "solid" : "regular" %> fa-bookmark"
+                    data-controller="bookmark"
+                    data-action="click->bookmark#change"
+                    data-bookmark-id="<%= bookmark&.id  %>"
+                    data-post-id="<%= post.id %>"
+                    data-scrf-token="<%= form_authenticity_token %>"
+                  ></i>
                 </div>
-              </div>
               <div class="row align-items-center">
                 <div class="col mt-2">
                   <%= link_to post.title, post_path(post) %>

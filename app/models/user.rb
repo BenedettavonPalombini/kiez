@@ -5,11 +5,8 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
   geocoded_by :address
   # validates :photo, presence: true
-  validates :email, presence: true
   validates :address, presence: true
   validates :first_name, presence: true
-  validates :password, presence: true
-  validates :password, confirmation: true
   after_validation :geocode, if: :will_save_change_to_address?
   has_many :bookmarks
   has_many :posts
