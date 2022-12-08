@@ -9,7 +9,7 @@
             <%= post.category %>
         </div>
       </div>
-      <%= post.created_at.strftime("%m/%d/%Y") %>
+      <%= post.created_at.strftime("%m/%d/%Y")%>
           <div class="secondone">
             <div class= "show-neighborhood-picture">
                 <% if post.photo.attached? %>
@@ -27,7 +27,11 @@
                   <%= post.duration %>
                 </div>
                 <div class="show-neighborhood-price">
-                  <%= post.price %>
+                <% if post.price %>
+                  <p><%= post.price%>€</p>
+                <% else %>
+                  <%= post.price%>
+                <% end %>
                 </div>
               </div>
             </div>
@@ -52,7 +56,7 @@
                 </div>
               <% else %>
                 <div class="col">
-                  <%= link_to "Send a message to #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-default"  %>
+                  <%= link_to "Message #{post.user.first_name}", conversations_path(user: post.user), data: { turbo_method: :post}, class: "btn btn-default"  %>
                 </div>
               <% end %>
             </div>
