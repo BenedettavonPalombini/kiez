@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   KINDS = ["neighborhood", "building"]
   CATEGORY = [
     "Lost Item", "Lost Pet", "Giveaway", "Moving", "Announcement", "Furniture Assembly",
-    "Appliance Repair", "Housesitting",
+    "Appliance Repair", "Housesitting", "Childcare",
     "Language Exchange", "Recommendation", "Workshop"
   ]
   has_one_attached :photo

@@ -1,0 +1,25 @@
+.logo-top {
+flex-direction: row;
+display: flex;
+flex-grow: 1;
+justify-content: center;
+justify-items: center;
+align-content: center;
+margin: 10px;
+align-items: flex-end;
+}
+
+.logo-top-form-building {
+flex-direction: row;
+display: flex;
+flex-grow: 1;
+justify-content: center;
+justify-items: center;
+align-content: center;
+margin: 10px;
+align-items: stretch;
+}
+
+.container .logo-top h1, h2, h3, h4 {
+padding-left: 10px;
+}

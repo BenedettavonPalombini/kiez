@@ -7,3 +7,12 @@
   font-family: $body-font;
   font-size: 10px;
 }
+
+
+.mapboxgl-popup-content a {
+  text-align: center;
+  font-family: $body-font;
+  font-size: 10px;
+  text-decoration: none;
+  color: $black;
+}
