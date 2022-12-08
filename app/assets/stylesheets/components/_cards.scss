@@ -1,5 +1,11 @@
 // taken from
 
+.building-cards {
+background-color: $light-mint;
+overflow: hidden;
+border-radius: 0.25rem;
+}
+
 .card-trip {
   overflow: hidden;
   background: $white;
