@@ -33,6 +33,7 @@ karlheinz = User.create!(email: "test36@test.com",
                         last_name: "Böhm",
                         address: "Landshuter Str. 17, 10779 Berlin",
                         verified: "true"
+
 )
 
 karlheinz.save!
