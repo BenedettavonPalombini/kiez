@@ -1,29 +1,29 @@
 
 <div class="hbanner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80);">
   <div class="container">
-   <div class="d-flex justify-content-left"><%= image_tag "kiez-logo-text.svg", alt: "KIEZ logo", width: 95 %></div>
+   <div class="d-flex justify-content-left"><%= image_tag "kiez-logo-text-white.svg", alt: "KIEZ logo", width: 95 %></div>
     <h2>Welcome to <%= current_user.address.split(",")[0]%></h2>
   </div>
 </div>
 
 <% @building_user.each do |user| %>
   <div class= "card no-outline">
-    <div class= "inbox-card m-1">
-      <div class="row align-items-start">
-        <div class="col">
+    <div class= "neighbor-card">
+      <div class= "neighbor-name-photo">
+        <div class="neighbor-avatar">
           <% if user.photo.attached? %>
             <%= cl_image_tag user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
           <% else %>
           <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
           <% end %>
         </div>
-        <div class="col neighbors-name">
+        <div class="neighbor-neighbors-name">
           <%= "#{user.first_name} #{user.last_name}" %>
         </div>
-        <div class="col">
+      </div>
+        <div class="neighbor-message">
           <%= link_to "Message", conversations_path(user: user), data: { turbo_method: :post}, class: "btn btn-messaging"%>
         </div>
-      </div>
     </div>
   <% end %>
  </div>
