@@ -16,11 +16,13 @@
   </div>
 
   <%= simple_form_for [@conversation, @message],
-    html: {class: "d-flex"} do |f|
+    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-
+  flex" } do |f|
   %>
     <%= f.input :content, :as => :text,
       label: false,
       placeholder: "type your message here",
+      input_html: {data: {conversation_subscription_target: :input }},
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= f.submit "Send", class: "btn-default mb-3" %>
