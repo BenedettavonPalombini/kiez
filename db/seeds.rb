@@ -5,92 +5,6 @@ require 'faker'
 
 # postphoto = URI.open("https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80")
 
-puts "creating users for Heilbronner Str. 11"
-
-klaus = User.create!(email: "test25@example.com",
-            password: "123456",
-            first_name: "Klaus",
-            last_name: "Fischer",
-            address: "Heilbronner Str. 11, 10779 Berlin",
-            verified: "true",
-          )
-
-klaus.save
-#             user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-
-hanna = User.create!(email: "test2@test.com",
-            password: "123456",
-            first_name: "Hanna",
-            last_name: "Fassbinder",
-            address: "Heilbronner Str. 11, 10779 Berlin",
-            verified: "true"
-)
-
-hanna.save
-
-
-tobias = User.create!(email: "test4@test.com",
-            password: "123456",
-            first_name: "Tobias",
-            last_name: "Ganz",
-            address: "Heilbronner Str. 11, 10779 Berlin",
-            verified: "true"
-)
-
-tobias.save
-
-puts "done"
-
-puts "Users from Heilbronner Str. 11 creating building posts."
-new_post = Post.create!(title: "Missing Package",
-                        content: "Hello, I was expecting a package to be delivered earlier this week. Please message me
-                        if the mailman dropped it off with you.",
-                        hidden: false,
-                        solved: false,
-                        user: hanna,
-                        kind: "building",
-                        address: "Heilbronner Str. 11, 10779 Berlin"
-)
-
-new_post.save!
-
-new_post = Post.create!(title: "Cat Missing",
-                        content: "Hey neighbors, I am missing my cat, Whiskers. He is white with grey spots. Last seen three days ago. Let me know if you have seen him! Thanks.",
-                        hidden: false,
-                        solved: false,
-                        user: klaus,
-                        kind: "building",
-                        address: "Heilbronner Str. 11, 10779 Berlin"
-)
-
-new_post.save!
-
-new_post = Post.create!(title: "Does anyone want fruit?",
-                        content: "I am going away for a week, and I have a bowl of fruit that will go bad. Does anyone want it?",
-                        hidden: false,
-                        solved: false,
-                        user: madeleine,
-                        kind: "building",
-                        address: madeleine.address
-)
-
-new_post.save!
-
-new_post = Post.create!(title: "Taking care of plants",
-                        content: "I will be abroad for one month. If anyone is available to water my plants once a week,
-                        I would be grateful.",
-                        hidden: false,
-                        solved: false,
-                        user: tobias,
-                        kind: "building",
-                        address: "Heilbronner Str. 11, 10779 Berlin"
-)
-
-new_post.save!
-
-puts "Done."
-
-
 puts "creating users for Heilbronner Str. 23."
 
 tom = User.create!(email: "test26@example.com",
@@ -241,6 +155,92 @@ karl = User.create!(email: "test33@test.com",
 karl.save!
 
 puts "done"
+
+puts "creating users for Heilbronner Str. 11"
+
+klaus = User.create!(email: "test25@example.com",
+            password: "123456",
+            first_name: "Klaus",
+            last_name: "Fischer",
+            address: "Heilbronner Str. 11, 10779 Berlin",
+            verified: "true",
+          )
+
+klaus.save
+#             user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+hanna = User.create!(email: "test2@test.com",
+            password: "123456",
+            first_name: "Hanna",
+            last_name: "Fassbinder",
+            address: "Heilbronner Str. 11, 10779 Berlin",
+            verified: "true"
+)
+
+hanna.save
+
+
+tobias = User.create!(email: "test4@test.com",
+            password: "123456",
+            first_name: "Tobias",
+            last_name: "Ganz",
+            address: "Heilbronner Str. 11, 10779 Berlin",
+            verified: "true"
+)
+
+tobias.save
+
+puts "done"
+
+puts "Users from Heilbronner Str. 11 creating building posts."
+new_post = Post.create!(title: "Missing Package",
+                        content: "Hello, I was expecting a package to be delivered earlier this week. Please message me
+                        if the mailman dropped it off with you.",
+                        hidden: false,
+                        solved: false,
+                        user: hanna,
+                        kind: "building",
+                        address: "Heilbronner Str. 11, 10779 Berlin"
+)
+
+new_post.save!
+
+new_post = Post.create!(title: "Cat Missing",
+                        content: "Hey neighbors, I am missing my cat, Whiskers. He is white with grey spots. Last seen three days ago. Let me know if you have seen him! Thanks.",
+                        hidden: false,
+                        solved: false,
+                        user: klaus,
+                        kind: "building",
+                        address: "Heilbronner Str. 11, 10779 Berlin"
+)
+
+new_post.save!
+
+new_post = Post.create!(title: "Does anyone want fruit?",
+                        content: "I am going away for a week, and I have a bowl of fruit that will go bad. Does anyone want it?",
+                        hidden: false,
+                        solved: false,
+                        user: madeleine,
+                        kind: "building",
+                        address: madeleine.address
+)
+
+new_post.save!
+
+new_post = Post.create!(title: "Taking care of plants",
+                        content: "I will be abroad for one month. If anyone is available to water my plants once a week,
+                        I would be grateful.",
+                        hidden: false,
+                        solved: false,
+                        user: tobias,
+                        kind: "building",
+                        address: "Heilbronner Str. 11, 10779 Berlin"
+)
+
+new_post.save!
+
+puts "Done."
+
 
 puts "Users from Landshuter Str. 17 creating building posts."
 
