@@ -1,5 +1,6 @@
 .wrapper-show{
   display: grid;
+  margin: 10px;
 }
 
 .firstone {
@@ -7,6 +8,10 @@
   width: 100%;
   text-align: center;
   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .firstone .category {
@@ -16,6 +21,7 @@
 
 .firstone .show-neighborhood-title {
   float: left;
+  text-align: justify;
 }
 
 .show-neighborhood-date {
@@ -24,10 +30,7 @@ font-size: 13px;
 
 .secondone {
   display: flex;
-}
-
-.secondone .show-neighborhood-picture {
-  margin-right: 13px;
+  margin-top: 8px;
 }
 
 .right-of-picture .show-neighborhood-content {
