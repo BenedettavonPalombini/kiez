@@ -50,6 +50,7 @@ border-radius: 0.25rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
   padding: 12px;
+
 }
 
 .fa-bookmark {
@@ -206,7 +207,7 @@ overflow: hidden;
   .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
   .card-footer {
     display: flex;

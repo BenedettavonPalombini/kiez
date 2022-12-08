@@ -69,9 +69,9 @@ new_post = Post.create!(title: "Does anyone want fruit?",
                         content: "I am going away for a week, and I have a bowl of fruit that will go bad. Does anyone want it?",
                         hidden: false,
                         solved: false,
-                        user: madeleine,
+                        user: tobias,
                         kind: "building",
-                        address: madeleine.address
+                        address: tobias.address
 )
 
 new_post.save!

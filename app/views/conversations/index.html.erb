@@ -1,31 +1,37 @@
-<div class="container bg-card text-center">
-  <div class="d-flex justify-content-left"><%= image_tag "kiez-logo.svg", alt: "KIEZ logo", width: 35 %></div>
-  <h1 class="d-flex justify-content-center"> Inbox </h1>
+<div class="container">
+  <div class="logo-top">
+    <%= image_tag "kiez-logo.svg", alt: "KIEZ logo", width: 35 %>
+    <h2>Inbox</h2>
+  </div>
+  <% if @conversations.empty? %>
+    <p class="d-flex justify-content-center m-3"> You Have No Messages </p>
+  <% end %>
+  <% @conversations.each do |conversation| %>
 
-<% if @conversations.empty? %>
-  <p class="d-flex justify-content-center m-3"> You Have No Messages </p>
-<% end %>
-<% @conversations.each do |conversation| %>
-
-  <div class="w2-container">
-    <div class= "card no-outline">
-      <div class= "inbox-card cards mb-2">
-          <div class="row align-items-start">
-            <% if conversation.other_users(current_user).empty? %>
-              <%= nil %>
-            <% else %>
-              <%= link_to  conversation_path(conversation) do  %>
-              <div class="photo-and-image">
-                <img src="/assets/user-938dfd6c6fcf093ffb05618e924f5002bf57af4fc7074d538a8be787883a9495.jpg" class="card-trip-user avatar-bordered" />
-                <h2><%= link_to conversation.other_users(current_user)[0].first_name, conversation_path(conversation), class: "m-3" %> </h2>
-              </div>
-               <% end %>
-              <div>
-                <p> <%= link_to conversation.messages.last&.content, conversation_path(conversation) %> </p>
-              </div>
-            <% end  %>
-          </div>
+    <div class="w2-container">
+      <div class= "card no-outline">
+        <div class= "inbox-card cards mb-2">
+            <div class="row align-items-start">
+              <% if conversation.other_users(current_user).empty? %>
+                <%= nil %>
+              <% else %>
+                <%= link_to  conversation_path(conversation) do  %>
+                <div class="photo-and-image">
+                  <% if conversation.other_users(current_user)[0].photo.attached? %>
+                  <%= cl_image_tag conversation.other_users(current_user)[0].photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% else %>
+                  <%= image_tag "#{["user", "man", "man2", "man3", "woman", "woman2", "woman3"].sample}.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+                  <% end %>
+                  <h2><%= link_to conversation.other_users(current_user)[0].first_name, conversation_path(conversation), class: "m-3" %> </h2>
+                </div>
+                <% end %>
+                <div>
+                  <p> <%= link_to conversation.messages.last&.content, conversation_path(conversation) %> </p>
+                </div>
+              <% end  %>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -14,14 +14,16 @@
           <% if user.photo.attached? %>
             <%= cl_image_tag user.photo.key, class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
           <% else %>
-          <%= image_tag "user.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
+          <%= image_tag "#{["user", "man", "man2", "man3", "woman", "woman2", "woman3"].sample}.jpg", class: "image-fluid profile-img", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
           <% end %>
         </div>
         <div class="col">
           <%= "#{user.first_name} #{user.last_name}" %>
         </div>
         <div class="col">
+          <% if user != current_user %>
           <%= link_to "Message", conversations_path(user: user), data: { turbo_method: :post}, class: "btn btn-messaging"%>
+          <% end %>
         </div>
       </div>
     </div>
