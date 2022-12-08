@@ -75,4 +75,10 @@ font-size: 13px;
   margin-left: auto;
 }
 
-
+.avatar-line{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  margin-top: 6px
+}
