@@ -3,20 +3,20 @@ class PostsController < ApplicationController
     @users = User.geocoded
     @posts = Post.where(user_id: @users.pluck(:id))
     if params[:kind_of_post] == "building"
-      @posts = Post.where(kind: "building").where(address: current_user.address).where(solved: false)
+      @posts = Post.where(kind: "building").where(address: current_user.address).where(solved: false).order(created_at: :desc)
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 7.days.ago)
     elsif params[:kind_of_post] == "neighborhood" && params.has_key?("category")
       # add in nearby radius for kiez
       # add in && post.hidden = false && post.solved = false
-      @posts = Post.geocoded.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
+      @posts = Post.geocoded.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false).order(created_at: :desc)
       @posts = @posts.select do |post|
         post.category == params[:category]
       # logic to hide posts after x amount of days
       # .where("created_at => ?", 14.days.ago)
       end
     elsif params[:kind_of_post] == "neighborhood"
-      @posts = Post.geocoded.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false)
+      @posts = Post.geocoded.where(kind: "neighborhood").near([current_user.latitude, current_user.longitude], 5).where(solved: false).order(created_at: :desc)
     end
 
     if params[:query].present?
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
       }
     end
 
-    @posts = @posts.order(created_at: :desc)
+    # @posts = @posts.order(created_at: :desc)
   end
 
   def show

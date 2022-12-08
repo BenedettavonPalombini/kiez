@@ -180,6 +180,8 @@ max-width: 366px;
 overflow: hidden;
 
 .left{
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 170px;
   justify-content: center;
@@ -189,6 +191,7 @@ overflow: hidden;
 }
 .right {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   max-width: inherit;
