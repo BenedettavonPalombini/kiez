@@ -12,7 +12,7 @@
     <% posts.each do |post| %>
       <div class="container bg-card text-center mt-2">
         <div class="building-cards col-lg-2 col-md-4 col-sm-12 bg-card bcard card card-body no-outline">
-          <div class="avatar-line d-flex w-100">
+          <div class="building-avatar-line d-flex w-100">
               <% if post.user.photo.attached? %>
                 <%= cl_image_tag post.user.photo.key, class: "image-fluid show-image", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
               <% else %>

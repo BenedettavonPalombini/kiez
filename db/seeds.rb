@@ -5,91 +5,50 @@ require 'faker'
 
 # postphoto = URI.open("https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80")
 
-puts "creating users for Heilbronner Str. 11"
+puts "creating users for Münchener Str. 42, 10779 Berlin."
 
-klaus = User.create!(email: "test25@example.com",
-            password: "123456",
-            first_name: "Klaus",
-            last_name: "Fischer",
-            address: "Heilbronner Str. 11, 10779 Berlin",
-            verified: "true",
-          )
-
-klaus.save
-#             user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-
-hanna = User.create!(email: "test2@test.com",
-            password: "123456",
-            first_name: "Hanna",
-            last_name: "Fassbinder",
-            address: "Heilbronner Str. 11, 10779 Berlin",
-            verified: "true"
+alfred = User.create!(email: "test34@test.com",
+                      password: "123456",
+                      first_name: "Alfred",
+                      last_name: "Döblin",
+                      address: "Landshuter Str. 17, 10779 Berlin",
+                      verified: "true"
 )
 
-hanna.save
+alfred.save!
 
-
-tobias = User.create!(email: "test4@test.com",
-            password: "123456",
-            first_name: "Tobias",
-            last_name: "Ganz",
-            address: "Heilbronner Str. 11, 10779 Berlin",
-            verified: "true"
+christa = User.create!(email: "test35@test.com",
+                      password: "123456",
+                      first_name: "Christa",
+                      last_name: "Wolf",
+                      address: "Landshuter Str. 17, 10779 Berlin",
+                      verified: "true"
 )
 
-tobias.save
+christa.save!
+
+karlheinz = User.create!(email: "test36@test.com",
+                        password: "123456",
+                        first_name: "Karlheinz",
+                        last_name: "Böhm",
+                        address: "Landshuter Str. 17, 10779 Berlin",
+                        verified: "true"
+
+)
+
+karlheinz.save!
+
+adrian = User.create!(email: "test37@test.com",
+                      password: "123456",
+                      first_name: "Adrian",
+                      last_name: "Hoven",
+                      address: "Landshuter Str. 17, 10779 Berlin",
+                      verified: "true"
+)
+
+adrian.save!
 
 puts "done"
-
-puts "Users from Heilbronner Str. 11 creating building posts."
-new_post = Post.create!(title: "Missing Package",
-                        content: "Hello, I was expecting a package to be delivered earlier this week. Please message me
-                        if the mailman dropped it off with you.",
-                        hidden: false,
-                        solved: false,
-                        user: hanna,
-                        kind: "building",
-                        address: "Heilbronner Str. 11, 10779 Berlin"
-)
-
-new_post.save!
-
-new_post = Post.create!(title: "Cat Missing",
-                        content: "Hey neighbors, I am missing my cat, Whiskers. He is white with grey spots. Last seen three days ago. Let me know if you have seen him! Thanks.",
-                        hidden: false,
-                        solved: false,
-                        user: klaus,
-                        kind: "building",
-                        address: "Heilbronner Str. 11, 10779 Berlin"
-)
-
-new_post.save!
-
-new_post = Post.create!(title: "Does anyone want fruit?",
-                        content: "I am going away for a week, and I have a bowl of fruit that will go bad. Does anyone want it?",
-                        hidden: false,
-                        solved: false,
-                        user: tobias,
-                        kind: "building",
-                        address: tobias.address
-)
-
-new_post.save!
-
-new_post = Post.create!(title: "Taking care of plants",
-                        content: "I will be abroad for one month. If anyone is available to water my plants once a week,
-                        I would be grateful.",
-                        hidden: false,
-                        solved: false,
-                        user: tobias,
-                        kind: "building",
-                        address: "Heilbronner Str. 11, 10779 Berlin"
-)
-
-new_post.save!
-
-puts "Done."
-
 
 puts "creating users for Heilbronner Str. 23."
 
@@ -134,56 +93,6 @@ lukas = User.create!(email: "test29@test.com",
 )
 
 lukas.save
-
-puts "done"
-
-puts "Users from Heilbronner Str. 23 creating building posts."
-
-new_post = Post.create!(title: "Throwing a Christmas Party",
-                        content: "Throwing a Christmas party this Friday. Message me if you want to come!",
-                        hidden: false,
-                        solved: false,
-                        user: lukas,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-new_post.save
-
-new_post = Post.create!(title: "Notice High Rent",
-                        content: "Did anyone else get a letter about a rent increase?",
-                        hidden: false,
-                        solved: false,
-                        user: johnny,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-
-new_post.save
-
-new_post = Post.create!(title: "Water Heater Out ",
-                        content: "My water heater is out! Am I the only one?",
-                        hidden: false,
-                        solved: false,
-                        user: emma,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-new_post.save
-
-new_post = Post.create!(title: "Does anyone have a spare bike lock?",
-                        content: "I misplaced my bike :(. If anyone has a spare, would they mind lending it to me until
-                        I buy a new one?",
-                        hidden: false,
-                        solved: false,
-                        user: tom,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-new_post.save
 
 puts "done"
 
@@ -241,6 +150,143 @@ karl = User.create!(email: "test33@test.com",
 karl.save!
 
 puts "done"
+
+puts "creating users for Heilbronner Str. 11"
+
+klaus = User.create!(email: "test25@example.com",
+            password: "123456",
+            first_name: "Klaus",
+            last_name: "Fischer",
+            address: "Heilbronner Str. 11, 10779 Berlin",
+            verified: "true",
+          )
+
+klaus.save
+#             user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+hanna = User.create!(email: "test2@test.com",
+            password: "123456",
+            first_name: "Hanna",
+            last_name: "Fassbinder",
+            address: "Heilbronner Str. 11, 10779 Berlin",
+            verified: "true"
+)
+
+hanna.save
+
+
+tobias = User.create!(email: "test4@test.com",
+            password: "123456",
+            first_name: "Tobias",
+            last_name: "Ganz",
+            address: "Heilbronner Str. 11, 10779 Berlin",
+            verified: "true"
+)
+
+tobias.save
+
+puts "done"
+
+puts "Users from Heilbronner Str. 23 creating building posts."
+
+new_post = Post.create!(title: "Throwing a Christmas Party",
+                        content: "Throwing a Christmas party this Friday. Message me if you want to come!",
+                        hidden: false,
+                        solved: false,
+                        user: lukas,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+new_post.save
+
+new_post = Post.create!(title: "Notice High Rent",
+                        content: "Did anyone else get a letter about a rent increase?",
+                        hidden: false,
+                        solved: false,
+                        user: johnny,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+
+new_post.save
+
+new_post = Post.create!(title: "Water Heater Out ",
+                        content: "My water heater is out! Am I the only one?",
+                        hidden: false,
+                        solved: false,
+                        user: emma,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+new_post.save
+
+new_post = Post.create!(title: "Does anyone have a spare bike lock?",
+                        content: "I misplaced my bike :(. If anyone has a spare, would they mind lending it to me until
+                        I buy a new one?",
+                        hidden: false,
+                        solved: false,
+                        user: tom,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+new_post.save
+
+puts "done"
+
+
+puts "Users from Heilbronner Str. 11 creating building posts."
+new_post = Post.create!(title: "Missing Package",
+                        content: "Hello, I was expecting a package to be delivered earlier this week. Please message me
+                        if the mailman dropped it off with you.",
+                        hidden: false,
+                        solved: false,
+                        user: hanna,
+                        kind: "building",
+                        address: "Heilbronner Str. 11, 10779 Berlin"
+)
+
+new_post.save!
+
+new_post = Post.create!(title: "Cat Missing",
+                        content: "Hey neighbors, I am missing my cat, Whiskers. He is white with grey spots. Last seen three days ago. Let me know if you have seen him! Thanks.",
+                        hidden: false,
+                        solved: false,
+                        user: klaus,
+                        kind: "building",
+                        address: "Heilbronner Str. 11, 10779 Berlin"
+)
+
+new_post.save!
+
+new_post = Post.create!(title: "Does anyone want fruit?",
+                        content: "I am going away for a week, and I have a bowl of fruit that will go bad. Does anyone want it?",
+                        hidden: false,
+                        solved: false,
+                        user: madeleine,
+                        kind: "building",
+                        address: madeleine.address
+)
+
+new_post.save!
+
+new_post = Post.create!(title: "Taking care of plants",
+                        content: "I will be abroad for one month. If anyone is available to water my plants once a week,
+                        I would be grateful.",
+                        hidden: false,
+                        solved: false,
+                        user: tobias,
+                        kind: "building",
+                        address: "Heilbronner Str. 11, 10779 Berlin"
+)
+
+new_post.save!
+
+puts "Done."
+
 
 puts "Users from Landshuter Str. 17 creating building posts."
 
@@ -305,49 +351,6 @@ new_post.save!
 
 puts "done"
 
-puts "creating users for Münchener Str. 42, 10779 Berlin."
-
-alfred = User.create!(email: "test34@test.com",
-                      password: "123456",
-                      first_name: "Alfred",
-                      last_name: "Döblin",
-                      address: "Landshuter Str. 17, 10779 Berlin",
-                      verified: "true"
-)
-
-alfred.save!
-
-christa = User.create!(email: "test35@test.com",
-                      password: "123456",
-                      first_name: "Christa",
-                      last_name: "Wolf",
-                      address: "Landshuter Str. 17, 10779 Berlin",
-                      verified: "true"
-)
-
-christa.save!
-
-karlheinz = User.create!(email: "test36@test.com",
-                        password: "123456",
-                        first_name: "Karlheinz",
-                        last_name: "Böhm",
-                        address: "Landshuter Str. 17, 10779 Berlin",
-                        verified: "true"
-)
-
-karlheinz.save!
-
-adrian = User.create!(email: "test37@test.com",
-                      password: "123456",
-                      first_name: "Adrian",
-                      last_name: "Hoven",
-                      address: "Landshuter Str. 17, 10779 Berlin",
-                      verified: "true"
-)
-
-adrian.save!
-
-puts "done"
 
 
 puts "Users from Münchener Str creating building posts."

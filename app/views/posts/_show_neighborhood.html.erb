@@ -13,9 +13,7 @@
           <div class="secondone">
             <div class= "show-neighborhood-picture">
                 <% if post.photo.attached? %>
-                  <%= cl_image_tag post.photo.key, height: 150, class: "image-fluid", style: "object-fit: cover", alt: "user-picture", crop: :fill, gravity: :face %>
-                <% else %>
-                <%= image_tag "chair.jpg", height: 150, class: "image-fluid", style: "object-fit: cover border-radius: 2px", alt: "user-picture", crop: :fill, gravity: :face %>
+                  <%= cl_image_tag post.photo.key, height: 150, class: "image-fluid", style: "object-fit: cover; margin-right: 13px", alt: "user-picture", crop: :fill, gravity: :face %>
                 <% end %>
             </div>
             <div class="right-of-picture">
