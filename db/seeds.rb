@@ -95,56 +95,6 @@ lukas.save
 
 puts "done"
 
-puts "Users from Heilbronner Str. 23 creating building posts."
-
-new_post = Post.create!(title: "Throwing a Christmas Party",
-                        content: "Throwing a Christmas party this Friday. Message me if you want to come!",
-                        hidden: false,
-                        solved: false,
-                        user: lukas,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-new_post.save
-
-new_post = Post.create!(title: "Notice High Rent",
-                        content: "Did anyone else get a letter about a rent increase?",
-                        hidden: false,
-                        solved: false,
-                        user: johnny,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-
-new_post.save
-
-new_post = Post.create!(title: "Water Heater Out ",
-                        content: "My water heater is out! Am I the only one?",
-                        hidden: false,
-                        solved: false,
-                        user: emma,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-new_post.save
-
-new_post = Post.create!(title: "Does anyone have a spare bike lock?",
-                        content: "I misplaced my bike :(. If anyone has a spare, would they mind lending it to me until
-                        I buy a new one?",
-                        hidden: false,
-                        solved: false,
-                        user: tom,
-                        kind: "building",
-                        address: "Heilbronner Str. 23, 10779 Berlin"
-)
-
-new_post.save
-
-puts "done"
-
 
 puts "creating users for Landshuter Str. 17."
 
@@ -235,6 +185,57 @@ tobias = User.create!(email: "test4@test.com",
 tobias.save
 
 puts "done"
+
+puts "Users from Heilbronner Str. 23 creating building posts."
+
+new_post = Post.create!(title: "Throwing a Christmas Party",
+                        content: "Throwing a Christmas party this Friday. Message me if you want to come!",
+                        hidden: false,
+                        solved: false,
+                        user: lukas,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+new_post.save
+
+new_post = Post.create!(title: "Notice High Rent",
+                        content: "Did anyone else get a letter about a rent increase?",
+                        hidden: false,
+                        solved: false,
+                        user: johnny,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+
+new_post.save
+
+new_post = Post.create!(title: "Water Heater Out ",
+                        content: "My water heater is out! Am I the only one?",
+                        hidden: false,
+                        solved: false,
+                        user: emma,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+new_post.save
+
+new_post = Post.create!(title: "Does anyone have a spare bike lock?",
+                        content: "I misplaced my bike :(. If anyone has a spare, would they mind lending it to me until
+                        I buy a new one?",
+                        hidden: false,
+                        solved: false,
+                        user: tom,
+                        kind: "building",
+                        address: "Heilbronner Str. 23, 10779 Berlin"
+)
+
+new_post.save
+
+puts "done"
+
 
 puts "Users from Heilbronner Str. 11 creating building posts."
 new_post = Post.create!(title: "Missing Package",
