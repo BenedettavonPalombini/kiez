@@ -5,6 +5,50 @@ require 'faker'
 
 # postphoto = URI.open("https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80")
 
+puts "creating users for Münchener Str. 42, 10779 Berlin."
+
+alfred = User.create!(email: "test34@test.com",
+                      password: "123456",
+                      first_name: "Alfred",
+                      last_name: "Döblin",
+                      address: "Landshuter Str. 17, 10779 Berlin",
+                      verified: "true"
+)
+
+alfred.save!
+
+christa = User.create!(email: "test35@test.com",
+                      password: "123456",
+                      first_name: "Christa",
+                      last_name: "Wolf",
+                      address: "Landshuter Str. 17, 10779 Berlin",
+                      verified: "true"
+)
+
+christa.save!
+
+karlheinz = User.create!(email: "test36@test.com",
+                        password: "123456",
+                        first_name: "Karlheinz",
+                        last_name: "Böhm",
+                        address: "Landshuter Str. 17, 10779 Berlin",
+                        verified: "true"
+)
+
+karlheinz.save!
+
+adrian = User.create!(email: "test37@test.com",
+                      password: "123456",
+                      first_name: "Adrian",
+                      last_name: "Hoven",
+                      address: "Landshuter Str. 17, 10779 Berlin",
+                      verified: "true"
+)
+
+adrian.save!
+
+puts "done"
+
 puts "creating users for Heilbronner Str. 23."
 
 tom = User.create!(email: "test26@example.com",
@@ -305,49 +349,6 @@ new_post.save!
 
 puts "done"
 
-puts "creating users for Münchener Str. 42, 10779 Berlin."
-
-alfred = User.create!(email: "test34@test.com",
-                      password: "123456",
-                      first_name: "Alfred",
-                      last_name: "Döblin",
-                      address: "Landshuter Str. 17, 10779 Berlin",
-                      verified: "true"
-)
-
-alfred.save!
-
-christa = User.create!(email: "test35@test.com",
-                      password: "123456",
-                      first_name: "Christa",
-                      last_name: "Wolf",
-                      address: "Landshuter Str. 17, 10779 Berlin",
-                      verified: "true"
-)
-
-christa.save!
-
-karlheinz = User.create!(email: "test36@test.com",
-                        password: "123456",
-                        first_name: "Karlheinz",
-                        last_name: "Böhm",
-                        address: "Landshuter Str. 17, 10779 Berlin",
-                        verified: "true"
-)
-
-karlheinz.save!
-
-adrian = User.create!(email: "test37@test.com",
-                      password: "123456",
-                      first_name: "Adrian",
-                      last_name: "Hoven",
-                      address: "Landshuter Str. 17, 10779 Berlin",
-                      verified: "true"
-)
-
-adrian.save!
-
-puts "done"
 
 
 puts "Users from Münchener Str creating building posts."
