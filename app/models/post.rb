@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   validates :kind, inclusion: { in: ["neighborhood", "building"] }
   KINDS = ["neighborhood", "building"]
   CATEGORY = [
-    "Lost Item", "Lost Pet", "Giveaway", "Moving", "Announcement", "Furniture Assembly",
+    "Lost Item", "Lost Pet", "Giveaway", "Moving", "Announcement", "Lending", "Furniture Assembly",
     "Appliance Repair", "Housesitting", "Childcare",
     "Language Exchange", "Recommendation", "Workshop"
   ]
